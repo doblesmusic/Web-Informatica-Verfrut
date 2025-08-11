@@ -1,0 +1,54 @@
+// Sobrescribir variables de Bootstrap con nuestras variables personalizadas
+$primary: $primary-color !default;
+$secondary: $secondary-color !default;
+
+// También puedes sobrescribir otras variables de Bootstrap
+$body-bg: $background-color !default;
+$body-color: $text-color !default;
+
+// Espaciado personalizado
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacing-xs,
+  2: $spacing-sm,
+  3: $spacing-md,
+  4: $spacing-lg,
+  5: $spacing-xl,
+) !default;
+
+// Border radius
+$border-radius: 8px !default;
+$border-radius-sm: 4px !default;
+$border-radius-lg: 12px !default;
+
+// Transiciones
+$transition-base: all 0.3s ease !default;
+
+// Sobrescribir colores de Bootstrap
+.btn-primary {
+  background-color: $primary-color !important;
+  border-color: $primary-color !important;
+  
+  &:hover {
+    background-color: darken($primary-color, 10%) !important;
+    border-color: darken($primary-color, 10%) !important;
+  }
+}
+
+.bg-primary {
+  background-color: $primary-color !important;
+}
+
+.text-primary {
+  color: $primary-color !important;
+}
+
+// Reducir padding de nav items
+.navbar-nav .nav-link {
+  padding: 0.5rem 1rem !important;
+}
+
+.navbar-nav .nav-item {
+  padding: 0 !important;
+}

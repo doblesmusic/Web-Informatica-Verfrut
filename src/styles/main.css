@@ -1,0 +1,145 @@
+.btn-primary {
+  background-color: #2463AE !important;
+  border-color: #2463AE !important;
+}
+.btn-primary:hover {
+  background-color: #1b4b84 !important;
+  border-color: #1b4b84 !important;
+}
+
+.bg-primary {
+  background-color: #2463AE !important;
+}
+
+.text-primary {
+  color: #2463AE !important;
+}
+
+.navbar-nav .nav-link {
+  padding: 0.5rem 1rem !important;
+}
+
+.navbar-nav .nav-item {
+  padding: 0 !important;
+}
+
+.th-header .dropdown {
+  position: relative !important;
+}
+.th-header .dropdown .dropdown-menu {
+  all: unset !important;
+  display: none !important;
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  min-width: 200px !important;
+  background: white !important;
+  border: 1px solid #eaeaea !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  padding: 0.5rem 0 !important;
+  margin: 0 !important;
+  z-index: 1000 !important;
+  list-style: none !important;
+}
+.dropdown:hover .th-header .dropdown .dropdown-menu {
+  display: block !important;
+  animation: slideIn 0.3s ease-out;
+}
+.th-header .dropdown:hover .dropdown-menu {
+  display: block !important;
+  animation: slideIn 0.3s ease-out;
+}
+.th-header .dropdown-item {
+  display: block !important;
+  padding: 0.5rem 1rem !important;
+  color: #333 !important;
+  text-decoration: none !important;
+  transition: background-color 0.2s ease !important;
+}
+.th-header .dropdown-item:hover {
+  background-color: #f8f9fa !important;
+  color: #2463AE !important;
+}
+.th-header .dropdown-divider {
+  height: 1px !important;
+  background-color: #e9ecef !important;
+  margin: 0.5rem 0 !important;
+  border: none !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
+  color: rgb(55, 55, 55);
+}
+
+.th-header {
+  background-color: #EFF1F9;
+  color: rgb(55, 55, 55);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1vh 2vh;
+}
+.th-header .navbar {
+  background: transparent;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.th-header .navbar-nav {
+  gap: 0.5rem;
+}
+.th-header .nav-item {
+  margin-right: 0.1rem;
+}
+.th-header .nav-item:last-child {
+  margin-right: 0;
+}
+.th-header .dropdown {
+  position: relative;
+}
+.th-header .btn {
+  font-weight: 500;
+  border-radius: 9px;
+  padding: 1rem 1.5rem;
+}
+.th-header .nav-link {
+  color: inherit;
+  border-radius: 18px;
+  padding: 0.5rem 1rem;
+  transition: all 0.5s ease;
+}
+.th-header .nav-link:hover {
+  color: #2463AE;
+  background-color: rgba(36, 99, 174, 0.1);
+  border-radius: 18px;
+}
+.th-header .nav-link.active {
+  color: #2463AE;
+  background-color: rgba(36, 99, 174, 0.15);
+  border-radius: 18px;
+  font-weight: 600;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,65 @@
+// Sobrescribir completamente Bootstrap dropdown
+.th-header {
+  .dropdown {
+    position: relative !important;
+    
+    .dropdown-menu {
+      // Reset completo de Bootstrap
+      all: unset !important;
+      
+      // Estilos personalizados
+      display: none !important;
+      position: absolute !important;
+      top: 100% !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      min-width: 200px !important;
+      background: white !important;
+      border: 1px solid #eaeaea !important;
+      border-radius: 8px !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+      padding: 0.5rem 0 !important;
+      margin: 0 !important;
+      z-index: 1000 !important;
+      list-style: none !important;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out !important;
+      
+      // Mostrar en hover
+      .dropdown:hover & {
+        display: block !important;
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) !important;
+      }
+    }
+    
+    // Hover del contenedor
+    &:hover .dropdown-menu {
+      display: block !important;
+      opacity: 1;
+      transform: translateX(-50%) translateY(0) !important;
+    }
+  }
+  
+  // Estilos de los items del dropdown
+  .dropdown-item {
+    display: block !important;
+    padding: 0.3rem 1rem !important;
+    color: #333 !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease-in-out !important;
+    
+    &:hover {
+      background-color: #f8f9fa !important;
+      color: #2463AE !important;
+    }
+  }
+  
+  .dropdown-divider {
+    height: 1px !important;
+    background-color: #e9ecef !important;
+    margin: 0.5rem 0 !important;
+    border: none !important;
+    transition: opacity 0.3s ease-in-out !important;
+  }
+}

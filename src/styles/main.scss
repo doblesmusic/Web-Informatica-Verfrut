@@ -1,0 +1,97 @@
+// Importar archivos parciales
+@import 'variables';
+@import 'mixins';
+// Importar Bootstrap con nuestras variables personalizadas
+@import 'bootstrap-override';
+// Importar override específico del dropdown
+@import 'dropdown-override';
+
+// Reset y estilos base
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-primary;
+  line-height: 1.5;
+  color: $text-color;
+}
+
+// Header
+.th-header {
+  background-color: $background-color;
+  color: $text-color;
+  font-family: $font-family-primary;
+  font-weight: 500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-header;
+  padding: 1vh 2vh; // Reducido vertical, mantenido horizontal
+
+  .navbar {
+    background: transparent;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .navbar-nav {
+    gap: 0.5rem;
+  }
+
+      .nav-item {
+      margin-right: 0.1rem; // Espaciado entre items
+      
+      &:last-child {
+        margin-right: 0; // Sin margen en el último elemento
+      }
+    }
+
+    // Dropdown styles moved to _dropdown-override.scss
+
+    // Posicionamiento del dropdown
+    .dropdown {
+      position: relative;
+    }
+
+  .btn {
+    font-weight: 500;
+    border-radius: 9px;
+    padding: $spacing-sm $spacing-md;
+  }
+
+  .nav-link {
+    color: inherit;
+    border-radius: 18px;
+    padding: 0.5rem 1rem; // Reducido significativamente
+    @include transition(all, 0.5s, ease);
+
+    &:hover {
+      color: $primary-color;
+      background-color: rgba(36, 99, 174, 0.1); // Azul claro con transparencia
+      border-radius: 18px;
+    }
+
+    &.active {
+      color: $primary-color;
+      background-color: rgba(36, 99, 174, 0.15); // Un poco más opaco para el activo
+      border-radius: 18px;
+      font-weight: 600;
+    }
+  }
+}
+
+// Animaciones
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
