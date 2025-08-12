@@ -4,11 +4,10 @@ import './App.css'
 function App() {
   return (
     <>
-      <Header />
       <main style={{ paddingTop: '100px' }}>
         <div className="container">
-          <h1>Bienvenido a Verfrut</h1>
-          <p>Tu portal de sistemas empresariales</p>
+          <h1>App</h1>
+          <p>Sistema de gestión</p>
         </div>
       </main>
     </>
