@@ -1,0 +1,41 @@
+.gradient {
+    background: transparent linear-gradient(253deg, #2463ae 0%, #0b3456 100%) 0% 0% no-repeat padding-box;
+    width: 100vw;
+    height: 80vh;
+    margin: 70px 0 0 0;
+    padding: 100px;
+    border-radius: 0px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.5rem;
+    box-sizing: border-box;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.gradient-title {
+    width: 100%;
+    font-size: 2.5rem !important;
+    color: #ffffff;
+    @media (min-width: 768px) {
+        width: 40%;
+        font-size: 4rem !important;
+    }
+}
+
+.gradient-description {
+    width: 100%;
+    font-size: 1rem !important;
+    color: #ffffff;
+    @media (min-width: 768px) {
+        width: 30%;
+        font-size: 1.5rem !important;
+    }
+}
+
+.gradient {
+    padding-left: 12rem !important;
+}

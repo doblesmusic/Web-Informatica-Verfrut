@@ -1,8 +1,10 @@
 // Importar archivos parciales
 @import 'variables';
 @import 'mixins';
+
 // Importar Bootstrap con nuestras variables personalizadas
 @import 'bootstrap-override';
+
 // Importar override específico del dropdown
 @import 'dropdown-override';
 
@@ -95,3 +97,6 @@ body {
     transform: translateY(0);
   }
 }
+
+// Importar estilos del Header-Phone al final para evitar conflictos
+@import '../components/Header-Phone/Header-Phone';

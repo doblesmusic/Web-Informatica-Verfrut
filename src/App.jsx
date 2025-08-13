@@ -1,15 +1,10 @@
-import Header from './components/Header'
 import './App.css'
+import Banner from './components/Banner/Banner'
 
 function App() {
   return (
     <>
-      <main style={{ paddingTop: '100px' }}>
-        <div className="container">
-          <h1>App</h1>
-          <p>Sistema de gestión</p>
-        </div>
-      </main>
+      <Banner />
     </>
   )
 }

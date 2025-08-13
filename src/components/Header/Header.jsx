@@ -148,8 +148,8 @@ function Header() {
                           Herramientas<i className="fi fi-rr-angle-right"></i>
                         </a>
                         <ul className="submenu">
-                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-envelope"></i>Generar Firmas</a></li>
-                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-comment-alt"></i>Sugerencias</a></li>
+                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-envelope"></i>Generar Firmas <span className="badge bg-success ms-2">Nuevo</span></a></li>
+                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-comment-alt"></i>Sugerencias <span className="badge bg-info ms-2">Beta</span></a></li>
                         </ul>
                       </li>
                     </ul>
