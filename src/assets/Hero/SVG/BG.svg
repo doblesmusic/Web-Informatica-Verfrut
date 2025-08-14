@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 906.76 574.57">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fddd73;
+      }
+
+      .cls-3 {
+        fill: #f46279;
+      }
+
+      .cls-4 {
+        fill: #053b6d;
+      }
+
+      .cls-5 {
+        fill: url(#Degradado_sin_nombre_72-2);
+      }
+
+      .cls-6 {
+        fill: #79da37;
+      }
+
+      .cls-7 {
+        fill: url(#Degradado_sin_nombre_72);
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <linearGradient id="Degradado_sin_nombre_72" data-name="Degradado sin nombre 72" x1="42.04" y1="257.57" x2="685.68" y2="257.57" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#afcfed"/>
+      <stop offset="1" stop-color="#2f7ad3"/>
+    </linearGradient>
+    <clipPath id="clippath">
+      <path class="cls-1" d="M90.89,27.75h545.92c26.97,0,48.86,21.89,48.86,48.86v361.93c0,26.97-21.89,48.86-48.86,48.86H90.89c-26.97,0-48.86-21.89-48.86-48.86V76.61c0-26.97,21.89-48.86,48.86-48.86Z"/>
+    </clipPath>
+    <linearGradient id="Degradado_sin_nombre_72-2" data-name="Degradado sin nombre 72" x1="222.4" y1="562.81" x2="505.31" y2="562.81" xlink:href="#Degradado_sin_nombre_72"/>
+  </defs>
+  <g id="BG">
+    <g>
+      <rect class="cls-4" x="319.03" y="417.73" width="89.64" height="142.86"/>
+      <path class="cls-7" d="M90.89,27.75h545.92c26.97,0,48.86,21.89,48.86,48.86v361.93c0,26.97-21.89,48.86-48.86,48.86H90.89c-26.97,0-48.86-21.89-48.86-48.86V76.61c0-26.97,21.89-48.86,48.86-48.86Z"/>
+      <g class="cls-8">
+        <rect class="cls-4" width="906.76" height="79.4"/>
+      </g>
+      <rect class="cls-5" x="222.4" y="551.05" width="282.91" height="23.52"/>
+      <path class="cls-2" d="M602.93,51.55c0,5.23-4.24,9.48-9.48,9.48s-9.48-4.24-9.48-9.48,4.24-9.48,9.48-9.48,9.48,4.24,9.48,9.48Z"/>
+      <g>
+        <path class="cls-3" d="M557.06,51.55c0,5.23-4.24,9.48-9.48,9.48s-9.48-4.24-9.48-9.48,4.24-9.48,9.48-9.48,9.48,4.24,9.48,9.48Z"/>
+        <path class="cls-6" d="M648.79,51.55c0,5.23-4.24,9.48-9.48,9.48s-9.48-4.24-9.48-9.48,4.24-9.48,9.48-9.48,9.48,4.24,9.48,9.48Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

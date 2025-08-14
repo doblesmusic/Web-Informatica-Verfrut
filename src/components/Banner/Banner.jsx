@@ -1,6 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './Banner.scss'
+import BG from '../../assets/Hero/svg/BG.svg'
+import CHECK from '../../assets/Hero/svg/CHECK.svg'
+import P1 from '../../assets/Hero/svg/P1.svg'
+import P2 from '../../assets/Hero/svg/P2.svg'
+import USER from '../../assets/Hero/svg/USER.svg'
 
 function IncidenciaModal() {
     return (
@@ -38,7 +43,7 @@ function Banner() {
   return (
 
     <>
-            <div className="gradient">
+            <div className="gradient p-3">
                 <div className="container">
                     <div className="row">
                         <div className="col-12 col-md-8">
@@ -50,9 +55,46 @@ function Banner() {
                                 Incidencias
                             </button>
                         </div>
-                        <div className="col-12 col-md-4">
-                            <img src="./src/assets/pc.png" alt="Logo Soporte" className='pc-image' />
-                            <img src="./src/assets/phone.png" alt="Logo Soporte" className='phone-image' />
+                        <div className="col-12 col-md-4 hero-anidado" > 
+                            <div className="hero-image-container" style={{position: 'relative', width: '100%', height: '400px'}}>
+                                <img src={BG} alt="Fondo" className='hero-bg' style={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    left: 0,
+                                    width: '150%',
+                                    height: '100%',
+                                    zIndex: 1
+                                }} />
+                                <img src={P1} alt="Persona 1" className='hero-person1' style={{
+                                    position: 'absolute',
+                                    top: '20%',
+                                    left: '75%',
+                                    width: '70%',
+                                    zIndex: 2
+                                }} />
+                                <img src={P2} alt="Persona 2" className='hero-person2' style={{
+                                    position: 'absolute',
+                                    top: '10%',
+                                    right: '60%',
+                                    width: '50%',
+                                    zIndex: 2
+                                }} />
+                                <img src={USER} alt="Usuario" className='hero-user' style={{
+                                    position: 'absolute',
+                                    top: '36%',
+                                    left: '58%',
+                                    transform: 'translateX(-50%)',
+                                    width: '40%',
+                                    zIndex: 3
+                                }} />
+                                <img src={CHECK} alt="Verificación" className='hero-check' style={{
+                                    position: 'absolute',
+                                    top: '30%',
+                                    right: '17%',
+                                    width: '15%',
+                                    zIndex: 4
+                                }} />
+                            </div>
                         </div>
                     </div>
                 </div>

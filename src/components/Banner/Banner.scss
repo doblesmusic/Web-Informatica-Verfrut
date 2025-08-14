@@ -1,6 +1,6 @@
 .gradient {
     align-items: center;
-    background: linear-gradient(135deg, #15365a 0%, #1a4a7d 50%, #0b3456 100%);
+    background: linear-gradient(135deg, #15365a 0%, #225284 50%, #0b3456 100%);
     border-radius: 0px;
     box-sizing: border-box;
     color: #ffffff;
@@ -191,22 +191,12 @@
     }
 }
 
-// Animaciones
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 .gradient-title,
 .gradient-description,
 .btn-incidencias {
-    animation: fadeInUp 0.8s ease-out;
+    animation: fadeInUp 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
 }
 
 .gradient-description {
@@ -215,31 +205,7 @@
 
 .btn-incidencias {
     animation-delay: 0.4s;
-}
-
-.pc-image {
-    display: none; // Hide on mobile by default
-    width: 100%;
-
-    height: auto;
-    position: absolute;
-    bottom: 15%;
-    right: 0;
-
-    transition: all 0.3s ease;
-
-    @media (min-width: 768px) {
-        display: block;
-        width: 50%;
-    }
-
-    @media (min-width: 1200px) {
-        top: 1%;
-        width: 45%;
-        right: 2%;
-        top: 5%;
-        scale: 0.8;
-    }
+    animation: fadeInUp 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .phone-image {
@@ -270,10 +236,12 @@
     from {
         opacity: 0;
         transform: translateY(20px);
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
     to {
         opacity: 1;
         transform: translateY(0);
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 
@@ -297,4 +265,133 @@
 
 #exampleModal .modal-content {
     z-index: 10001 !important;
+}
+
+.hero-anidado {
+    padding-left: -10% !important;
+    padding-right: 0% !important;
+    margin-left: -15% !important;
+    margin-right: 0% !important;
+}
+
+// Animaciones para los elementos del hero
+.hero-bg {
+    animation: fadeIn 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-person1 {
+    animation: slideInRight 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-person2 {
+    animation: slideInLeft 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-user {
+    animation: fadeInUpUser 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-check {
+    animation: gentleBounce 2.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(60px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-60px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+@keyframes gentleBounce {
+    0% {
+        transform: scale(0.95);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUpUser {
+    from {
+        transform: translateX(-50%) translateY(30px);
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.hero-bg {
+    transition: transform 0.3s ease;
+    &:hover {
+        transform: scale(1.05);
+    }
+    &:not(:hover) {
+        transform: scale(1);
+    }
+}
+
+.hero-user {
+    transition: transform 0.3s ease;
+    &:hover {
+        transform: translateX(-50%) scale(1.05);
+    }
+    &:not(:hover) {
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+.hero-person1 {
+    transition: transform 0.3s ease;
+    &:hover {
+        transform: scale(1.05);
+    }
+    &:not(:hover) {
+        transform: scale(1);
+    }
+}
+
+.hero-person2 {
+    transition: transform 0.3s ease;
+    &:hover {
+        transform: scale(1.05);
+    }
+    &:not(:hover) {
+        transform: scale(1);
+    }
+}
+
+.hero-check {
+    transition: transform 0.3s ease;
+    &:hover {
+        transform: scale(1.05);
+    }
+    &:not(:hover) {
+        transform: scale(1);
+    }
 }
