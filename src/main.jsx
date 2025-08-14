@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import Header from './components/Header/Header'
 import HeaderPhone from './components/Header-Phone/Header-Phone'
+import Info from './components/Info/Info'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

@@ -1,12 +1,11 @@
 .gradient {
-    background: transparent linear-gradient(253deg, #2463ae 0%, #0b3456 100%) 0% 0% no-repeat padding-box;
+    background: linear-gradient(135deg, #15365a 0%, #1a4a7d 50%, #0b3456 100%);
     width: 100vw;
     height: 80vh;
     margin: 70px 0 0 0;
-    padding: 100px;
+    padding: 100px 20px;
     border-radius: 0px;
     color: #ffffff;
-    text-align: center;
     font-size: 1.5rem;
     box-sizing: border-box;
     position: relative;
@@ -14,28 +13,272 @@
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: 768px) {
+        text-align: left;
+        align-items: flex-start;
+        padding: 100px 12rem;
+    }
 }
 
 .gradient-title {
     width: 100%;
+    text-align: center;
     font-size: 2.5rem !important;
     color: #ffffff;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    font-weight: 700;
+    
     @media (min-width: 768px) {
-        width: 40%;
-        font-size: 4rem !important;
+        width: 50%;
+        text-align: left;
+        font-size: 3.5rem !important;
+        margin-bottom: 1rem;
     }
 }
 
 .gradient-description {
     width: 100%;
-    font-size: 1rem !important;
+    text-align: center;
+    font-size: 1.3rem !important;
     color: #ffffff;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    opacity: 0.9;
+    
     @media (min-width: 768px) {
-        width: 30%;
-        font-size: 1.5rem !important;
+        width: 40%;
+        text-align: left;
+        font-size: 1.1rem !important;
+        margin-bottom: 2.5rem;
     }
 }
 
-.gradient {
-    padding-left: 12rem !important;
+.btn-incidencias {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+        background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+    }
+    
+    &:active {
+        transform: translateY(0);
+    }
+    
+    @media (min-width: 768px) {
+        padding: 18px 35px;
+        font-size: 1.2rem;
+    }
+}
+
+// Estilos del Modal
+.modal-incidencias {
+    z-index: 9999 !important;
+    
+    .modal-content {
+        border-radius: 20px;
+        border: none;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        z-index: 9999 !important;
+    }
+    
+    .modal-header {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 1.5rem;
+        position: relative;
+        z-index: 9999 !important;
+    }
+    
+    .btn-close-incidencia {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #6c757d;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000 !important;
+    }
+    
+    .modal-body {
+        padding: 2rem;
+        text-align: center;
+        z-index: 9999 !important;
+    }
+    
+    .logo-container {
+        margin-bottom: 1.5rem;
+        
+        img {
+            width: 80px;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+    }
+    
+    .modal-title {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #495057;
+        margin-bottom: 2rem;
+    }
+    
+    .btn-location {
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+        border: none;
+        border-radius: 12px;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+        
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+            background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+            color: white;
+            text-decoration: none;
+        }
+        
+        img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+        }
+        
+        &:first-child {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+// Animaciones
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gradient-title,
+.gradient-description,
+.btn-incidencias {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.gradient-description {
+    animation-delay: 0.2s;
+}
+
+.btn-incidencias {
+    animation-delay: 0.4s;
+}
+
+.pc-image {
+    display: none; // Hide on mobile by default
+    width: 45%;
+
+    height: auto;
+    position: absolute;
+    bottom: 15%;
+    right: 0;
+
+    transition: all 0.3s ease;
+
+    @media (min-width: 768px) {
+        display: block;
+        width: 50%;
+    }
+
+    @media (min-width: 1200px) {
+        top: 1%;
+        width: 45%;
+        right: 2%;
+    }
+}
+
+.phone-image {
+    display: none; // Hide on mobile by default
+    width: 18%;
+    height: auto;
+    position: absolute;
+    bottom: 15%;
+    right: 0%;
+    transition: all 0.3s ease;
+
+    @media (min-width: 768px) {
+        display: block;
+        width: 18%;
+        right: 42%;
+    }
+
+    @media (min-width: 1200px) {
+        width: 18%;
+        right: 37%;
+        top: 10%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Asegurar que los modales de Bootstrap tengan prioridad */
+.modal {
+    z-index: 9999 !important;
+}
+
+.modal-backdrop {
+    z-index: 9998 !important;
+}
+
+/* Asegurar que el modal de incidencias tenga la máxima prioridad */
+#exampleModal {
+    z-index: 10000 !important;
+}
+
+#exampleModal .modal-dialog {
+    z-index: 10001 !important;
+}
+
+#exampleModal .modal-content {
+    z-index: 10001 !important;
 }
