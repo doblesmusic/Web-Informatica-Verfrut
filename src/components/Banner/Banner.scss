@@ -1,23 +1,24 @@
 .gradient {
+    align-items: center;
     background: linear-gradient(135deg, #15365a 0%, #1a4a7d 50%, #0b3456 100%);
-    width: 100vw;
-    height: 80vh;
-    margin: 70px 0 0 0;
-    padding: 100px 20px;
     border-radius: 0px;
-    color: #ffffff;
-    font-size: 1.5rem;
     box-sizing: border-box;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    text-align: center;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
+    font-size: 1.5rem;
+    height: 90vh;
     justify-content: center;
-    align-items: center;
+    left: 50%;
+    margin: 70px 0 0 0;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 100px 20px 0 20px;
+    position: relative;
+    right: 50%;
+    text-align: center;
+    width: 100vw;
+    border-radius: 0px 0px 20px 20px;
 
     @media (min-width: 768px) {
         text-align: left;
@@ -28,7 +29,7 @@
 
 .gradient-title {
     width: 100%;
-    text-align: center;
+    text-align: left;
     font-size: 2.5rem !important;
     color: #ffffff;
     margin-bottom: 1rem;
@@ -36,16 +37,21 @@
     font-weight: 700;
     
     @media (min-width: 768px) {
-        width: 50%;
+        width: 100%;
         text-align: left;
         font-size: 3.5rem !important;
         margin-bottom: 1rem;
+    }
+
+    @media (min-width: 1200px) {
+        width: 80%;
+        font-size: 4.5rem !important;
     }
 }
 
 .gradient-description {
     width: 100%;
-    text-align: center;
+    text-align: left;
     font-size: 1.3rem !important;
     color: #ffffff;
     margin-bottom: 2rem;
@@ -53,10 +59,16 @@
     opacity: 0.9;
     
     @media (min-width: 768px) {
-        width: 40%;
+        width: 80%;
         text-align: left;
-        font-size: 1.1rem !important;
+        font-size: 1rem !important;
         margin-bottom: 2.5rem;
+    }
+
+    @media (min-width: 1200px) {
+        width: 60%;
+        font-size: 1.2rem !important;
+    
     }
 }
 
@@ -207,7 +219,7 @@
 
 .pc-image {
     display: none; // Hide on mobile by default
-    width: 45%;
+    width: 100%;
 
     height: auto;
     position: absolute;
@@ -225,12 +237,14 @@
         top: 1%;
         width: 45%;
         right: 2%;
+        top: 5%;
+        scale: 0.8;
     }
 }
 
 .phone-image {
     display: none; // Hide on mobile by default
-    width: 18%;
+    width: 100%;
     height: auto;
     position: absolute;
     bottom: 15%;
@@ -241,12 +255,14 @@
         display: block;
         width: 18%;
         right: 42%;
+        top: 26%;
     }
 
     @media (min-width: 1200px) {
-        width: 18%;
-        right: 37%;
-        top: 10%;
+        right: 35%;
+        top: 23%;
+        width: 15%;
+        scale: 0.9;
     }
 }
 
@@ -261,7 +277,7 @@
     }
 }
 
-/* Asegurar que los modales de Bootstrap tengan prioridad */
+
 .modal {
     z-index: 9999 !important;
 }

@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import Header from './components/Header/Header'
 import HeaderPhone from './components/Header-Phone/Header-Phone'
-import Info from './components/Info/Info'
+import Footer from './components/Footer/Footer'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -17,5 +17,8 @@ createRoot(document.getElementById('root')).render(
     <main>
       <App />
     </main>
+    <footer className="mt-5 pt-5">
+      <Footer />
+    </footer>
   </StrictMode>,
 )

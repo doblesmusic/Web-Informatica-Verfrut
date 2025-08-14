@@ -39,15 +39,23 @@ function Banner() {
 
     <>
             <div className="gradient">
-                <h1 className="gradient-title">Bienvenido <br />a sistemas & soporte.</h1>
-                <p className="gradient-description">Gestionamos la infraestructura tecnológica de Verfrut con soluciones vanguardistas que impulsan la eficiencia
-                el crecimiento continuo.</p>
-                <button className='btn btn-primary btn-xl d-flex align-items-center gap-2' data-bs-toggle="modal" data-bs-target="#exampleModal" style={{fontSize: '16px', padding: '15px 20px'}}>
-                    <i className="fi fi-rr-arrow-right"></i>
-                    Incidencias
-                </button>
-                <img src="./src/assets/pc.png" alt="Logo Soporte" className='pc-image' />
-                <img src="./src/assets/phone.png" alt="Logo Soporte" className='phone-image' />
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12 col-md-8">
+                            <h1 className="gradient-title">Bienvenido <br />a sistemas y soporte.</h1>
+                            <p className="gradient-description">Gestionamos la infraestructura tecnológica de Verfrut con soluciones vanguardistas que impulsan la eficiencia
+                            el crecimiento continuo.</p>
+                            <button className='btn btn-primary btn-xl d-flex align-items-center gap-2' data-bs-toggle="modal" data-bs-target="#exampleModal" style={{fontSize: '16px', padding: '15px 20px'}}>
+                                <i className="fi fi-rr-arrow-right"></i>
+                                Incidencias
+                            </button>
+                        </div>
+                        <div className="col-12 col-md-4">
+                            <img src="./src/assets/pc.png" alt="Logo Soporte" className='pc-image' />
+                            <img src="./src/assets/phone.png" alt="Logo Soporte" className='phone-image' />
+                        </div>
+                    </div>
+                </div>
             </div>
             <IncidenciaModal />
     </>
