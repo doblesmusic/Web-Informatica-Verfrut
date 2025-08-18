@@ -145,7 +145,7 @@ function Header() {
                         </a>
                         <ul className="submenu">
 
-                          <li><a className="dropdown-item" href="/docs/docs/intro" target="_blank"><i className="fi fi-rr-document"></i>Ver documentación</a></li>
+                          <li><a className="dropdown-item" href="http://localhost:3000/docs/Introducci%C3%B3n" target="_blank"><i className="fi fi-rr-document"></i>Ver documentación</a></li>
                           <li><a className="dropdown-item" href="#"><i className="fi fi-rr-play-alt"></i>Video Tutoriales</a></li>
                         </ul>
                       </li>
