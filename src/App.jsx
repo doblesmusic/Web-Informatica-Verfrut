@@ -4,12 +4,59 @@ import Banner from './components/Banner/Banner'
 import Marcas from './components/Marcas/Marcas'
 import Info from './components/Info/Info'
 import Info2 from './components/Info-2/Info2'
+import Acordion from './components/Acordion'
 
 function App() {
   return (
     <>
       <Banner />
       <Marcas />
+      <Acordion
+        className="pt-5"
+
+        // Title Section
+        title="La Importancia de Desarrollar Nuevas Tecnologías"
+        description="Transformación Digital y Desarrollo Empresarial"
+
+        // Image
+        imageSrc="./src/assets/laptop.png"
+        imageAlt="Laptop"
+        
+        // Title Accordion
+        title2="Innovación y Competitividad"
+        title3="Mejora de la Eficiencia Operativa"
+        title4="Sostenibilidad y Responsabilidad Social"
+        title5="Adaptación al Futuro del Mercado Frutícola"
+
+        // Body Text Accordion
+        bodyText="Desarrollar nuevas tecnologías permite a las empresas 
+                  mantenerse competitivas en mercados en constante cambio. La innovación 
+                  tecnológica facilita la creación de productos y servicios diferenciados 
+                  que atraen a clientes y mejoran la experiencia del usuario. Además, posiciona 
+                  a la empresa como líder en su industria al aprovechar las últimas tendencias y 
+                  herramientas disponibles."
+
+        bodyText2="La implementación de tecnologías avanzadas 
+                    automatiza tareas repetitivas, optimiza procesos internos y 
+                    reduce costos. Esto permite a los equipos concentrarse en actividades 
+                    estratégicas, mientras que la empresa opera de manera más rápida y eficiente. 
+                    Desde software de gestión hasta inteligencia artificial, la tecnología impacta 
+                    positivamente la productividad."
+
+        bodyText3="El desarrollo de tecnologías impulsa la sostenibilidad en el proceso 
+                    de producción de fruta. Esto incluye reducir el uso de recursos, minimizar los 
+                    desechos y garantizar un manejo más responsable con el medio ambiente. 
+                    Estas prácticas no solo benefician al entorno, sino que también responden a 
+                    las expectativas de mercados internacionales que valoran la sostenibilidad."
+                    
+        bodyText4="El desarrollo tecnológico ayuda a las empresas a 
+                    enfrentar los retos futuros del sector, como cambios en la demanda, 
+                    regulaciones internacionales más estrictas y la necesidad de una mayor 
+                    transparencia en los procesos. Estar preparados para adaptarse a estas 
+                    exigencias asegura que las empresas chilenas sigan liderando en la exportación 
+                    de frutas a nivel mundial."
+      />
+
       <Info 
         className="pt-5"
         title="¿Cómo realizar una incidencia correctamente? Aquí te lo contamos."

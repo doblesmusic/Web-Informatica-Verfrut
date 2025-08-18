@@ -1,0 +1,15 @@
+.img-container {
+  position: relative;
+  
+  .faq8-shape {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #0d6efd 0%, #0d6efd 70%, transparent 70%);
+    border-radius: 2px;
+  }
+}
+
+

@@ -3,10 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import '@flaticon/flaticon-uicons/css/all/all.css';
 
-
 function Header() {
+  const handleLogin = () => {
+    window.location.href = '/login';
+  }
+
+
   return (
-    <header className="th-header p-4">
+    <>
+      <header className="th-header p-4">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-3">
@@ -139,7 +144,8 @@ function Header() {
                           Documentación<i className="fi fi-rr-angle-right"></i>
                         </a>
                         <ul className="submenu">
-                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-document"></i>Ver documentación</a></li>
+
+                          <li><a className="dropdown-item" href="/docs/docs/intro" target="_blank"><i className="fi fi-rr-document"></i>Ver documentación</a></li>
                           <li><a className="dropdown-item" href="#"><i className="fi fi-rr-play-alt"></i>Video Tutoriales</a></li>
                         </ul>
                       </li>
@@ -162,11 +168,12 @@ function Header() {
             </nav>
           </div>
           <div className="col-3 text-end d-flex justify-content-end">
-            <div className='btn btn-primary btn-sm d-flex align-items-center'><i className="fi fi-rr-user" style={{color: "#87CEEB"}}></i>Iniciar Sesión</div>
+            <div className='btn btn-primary btn-sm d-flex align-items-center' onClick={handleLogin}><i className="fi fi-rr-user" style={{color: "#87CEEB"}}></i>Iniciar Sesión</div>
           </div>
         </div>
       </div>
     </header>
+    </>
   )
 }
 
