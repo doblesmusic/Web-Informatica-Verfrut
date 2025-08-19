@@ -3,11 +3,20 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import '@flaticon/flaticon-uicons/css/all/all.css';
 
-function Header() {
+function Header({ onPageChange }) {
   const handleLogin = () => {
     window.location.href = '/login';
   }
 
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    onPageChange('home');
+  }
+
+  const handleTurnosClick = (e) => {
+    e.preventDefault();
+    onPageChange('turnos');
+  }
 
   return (
     <>
@@ -15,7 +24,7 @@ function Header() {
       <div className="container">
         <div className="row align-items-center">
           <div className="col-3">
-            <a href="/" className="d-flex align-items-center">
+            <a href="/" className="d-flex align-items-center" onClick={handleHomeClick}>
               <img 
                 src="/src/assets/logotipos-verfrut.svg" 
                 alt="Logo Verfrut" 
@@ -49,15 +58,13 @@ function Header() {
                       Inicio
                     </a>
                     <ul className="dropdown-menu animate slideIn">
-                      <li><a className="dropdown-item" href="#">Panel Principal</a></li>
+                      <li><a className="dropdown-item" href="#" onClick={handleHomeClick}>Panel Principal</a></li>
                       <li><a className="dropdown-item" href="#">Novedades</a></li>
                       <li><hr className="dropdown-divider"/></li>
                       <li><a className="dropdown-item" href="#">Anuncios</a></li>
                       <li><a className="dropdown-item" href="#">Calendario</a></li>
                     </ul>
                   </li>
-
-
 
                   {/* Sistemas */}
                   <li className="nav-item dropdown">
@@ -87,7 +94,6 @@ function Header() {
                       </li>
                     </ul>
                   </li>
-
 
                   {/* Soporte TI */}
                   <li className="nav-item dropdown">
@@ -132,7 +138,6 @@ function Header() {
                     </ul>
                   </li>
 
-
                   {/* Recursos */}
                   <li className="nav-item dropdown">
                     <a className="nav-link" href="#" role="button">
@@ -155,13 +160,16 @@ function Header() {
                         </a>
                         <ul className="submenu">
                           <li><a className="dropdown-item" href="#"><i className="fi fi-rr-envelope"></i>Generar Firmas <span className="badge bg-success ms-2">Nuevo</span></a></li>
-                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-comment-alt"></i>Sugerencias <span className="badge bg-info ms-2">Beta</span></a></li>
+                          <li><a className="dropdown-item" href="https://sugerencias.verfrut.cl/" target="_blank"><i className="fi fi-rr-comment-alt"></i>Sugerencias <span className="badge bg-info ms-2">Actualizada</span></a></li>
                         </ul>
                       </li>
                     </ul>
                   </li>
+
+                  {/* Turnos - Nueva sección */}
                   <li className="nav-item">
-                    <a className="nav-link" href="#">Turnos</a>
+                    <a className="nav-link" href="#" onClick={handleTurnosClick}> Turnos
+                    </a>
                   </li>
                 </ul>
               </div>

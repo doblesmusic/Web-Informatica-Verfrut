@@ -2,7 +2,21 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './Header-Phone.scss'
 
-function HeaderPhone() {
+function HeaderPhone({ onPageChange }) {
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    onPageChange('home');
+  }
+
+  const handleTurnosClick = (e) => {
+    e.preventDefault();
+    onPageChange('turnos');
+  }
+
+  const handleLogin = () => {
+    window.location.href = '/login';
+  }
+
   return (
 
     <header className="th-header p-3">
@@ -28,6 +42,7 @@ function HeaderPhone() {
           <div className="col-4 d-flex align-items-center justify-content-center">
             <button 
               className="btn btn-primary btn-sm d-flex align-items-center justify-content-center"
+              onClick={handleLogin}
             >
               <i className="fi fi-rr-user me-1"></i>
               <span style={{
@@ -42,7 +57,7 @@ function HeaderPhone() {
 
           {/* Logo */}
           <div className="col-4 d-flex align-items-center justify-content-end">
-            <a href="/" className="d-flex align-items-center justify-content-end">
+            <a href="/" className="d-flex align-items-center justify-content-end" onClick={handleHomeClick}>
               <img 
                 src="/src/assets/logotipos-verfrut.svg" 
                 alt="Logo Verfrut" 
@@ -51,6 +66,8 @@ function HeaderPhone() {
                   height: "30px",
                   transition: "transform 0.2s ease-in-out"
                 }}
+                onMouseOver={(e) => e.target.style.transform = "scale(1.05)"}
+                onMouseOut={(e) => e.target.style.transform = "scale(1)"}
               />
             </a>
           </div>
@@ -88,10 +105,26 @@ function HeaderPhone() {
               <div id="inicioCollapse" className="accordion-collapse collapse" data-bs-parent="#mobileNavAccordion">
                 <div className="accordion-body">
                   <ul className="list-unstyled mb-0">
-                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Panel Principal</a></li>
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark" onClick={handleHomeClick}>Panel Principal</a></li>
                     <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Novedades</a></li>
                     <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Anuncios</a></li>
                     <li><a href="#" className="text-decoration-none text-dark">Calendario</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Turnos - Nueva sección */}
+            <div className="accordion-item border-0 mb-2">
+              <h2 className="accordion-header">
+                <button className="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#turnosCollapse">
+                  Turnos
+                </button>
+              </h2>
+              <div id="turnosCollapse" className="accordion-collapse collapse" data-bs-parent="#mobileNavAccordion">
+                <div className="accordion-body">
+                  <ul className="list-unstyled mb-0">
+                    <li><a href="#" className="text-decoration-none text-dark" onClick={handleTurnosClick}>Ver Turnos</a></li>
                   </ul>
                 </div>
               </div>
@@ -106,42 +139,15 @@ function HeaderPhone() {
               </h2>
               <div id="sistemasCollapse" className="accordion-collapse collapse" data-bs-parent="#mobileNavAccordion">
                 <div className="accordion-body">
-                  <div className="accordion" id="sistemasSubAccordion">
-                    <div className="accordion-item border-0">
-                      <h2 className="accordion-header">
-                        <button className="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#sistemasOpCollapse">
-                          Sistemas Operacionales
-                        </button>
-                      </h2>
-                      <div id="sistemasOpCollapse" className="accordion-collapse collapse" data-bs-parent="#sistemasSubAccordion">
-                        <div className="accordion-body">
-                          <ul className="list-unstyled ms-2">
-                            <li className="mb-2 text-start"><a href="#" className="text-decoration-none text-dark"><i className="fi fi-rr-truck-check me-2"></i>Cuenta Corriente<span className="dots">...</span></a></li>
-                            <li className="mb-2 text-start"><a href="#" className="text-decoration-none text-dark"><i className="fi fi-rr-apple-whole me-2"></i>Despacho de Fruta</a></li>
-                            <li className="mb-2 text-start"><a href="#" className="text-decoration-none text-dark"><i className="fi fi-rr-file me-2"></i>Documentos Electrónicos</a></li>
-                            <li className="text-start"><a href="#" className="text-decoration-none text-dark"><i className="fi fi-rr-house-user me-2"></i>Intranet Friopacking</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="accordion-item border-0">
-                      <h2 className="accordion-header">
-                        <button className="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#sistemasAdmCollapse">
-                          Sistemas Administrativos
-                        </button>
-                      </h2>
-                      <div id="sistemasAdmCollapse" className="accordion-collapse collapse" data-bs-parent="#sistemasSubAccordion">
-                        <div className="accordion-body">
-                          <ul className="list-unstyled ms-2 text-start">
-                            <li className="mb-2 text-start"><a href="#" className="text-decoration-none text-dark"><i className="fi fi-rr-chart-user me-2"></i>Plataforma DEC 5</a></li>
-                            <li className="mb-2 text-start"><a href="#" className="text-decoration-none text-dark"><i className="fi fi-rr-usd-circle me-2"></i>Rendiciones</a></li>
-                            <li className="mb-2 text-start"><a href="#" className="text-decoration-none text-dark"><i className="fi fi-rr-umbrella-beach me-2"></i>Vacaciones y Permisos</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <ul className="list-unstyled mb-0">
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Cuenta Corriente Envases</a></li>
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Despacho de Fruta (Campo)</a></li>
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Documentos Electrónicos (DTE)</a></li>
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Intranet Friopacking</a></li>
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Plataforma DEC 5</a></li>
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Rendiciones</a></li>
+                    <li><a href="#" className="text-decoration-none text-dark">Vacaciones y Permisos</a></li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -155,40 +161,16 @@ function HeaderPhone() {
               </h2>
               <div id="soporteCollapse" className="accordion-collapse collapse" data-bs-parent="#mobileNavAccordion">
                 <div className="accordion-body">
-                  <div className="accordion" id="soporteSubAccordion">
-                    <div className="accordion-item border-0">
-                      <h2 className="accordion-header">
-                        <button className="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#incidenciasCollapse">
-                          Incidencias y Solicitudes
-                        </button>
-                      </h2>
-                      <div id="incidenciasCollapse" className="accordion-collapse collapse" data-bs-parent="#soporteSubAccordion">
-                        <div className="accordion-body">
-                          <ul className="list-unstyled ms-2">
-                            <li className="mb-2 text-start"><a href="#" className="text-decoration-none text-dark"><img src="./src/assets/chile.svg" alt="Chile" className="me-2" style={{width: "18px"}}/>Portal Chile</a></li>
-                            <li className="mb-2 text-start"><a href="#" className="text-decoration-none text-dark"><img src="./src/assets/peru.svg" alt="Perú" className="me-2" style={{width: "18px"}}/>Portal Perú</a></li>
-                            <li className="text-start"><a href="#" className="text-decoration-none text-dark"><img src="./src/assets/solicitud.svg" alt="Solicitudes" className="me-2" style={{width: "18px"}}/>Solicitudes</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="accordion-item border-0">
-                      <h2 className="accordion-header">
-                        <button className="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#contactoCollapse">
-                          Contacto
-                        </button>
-                      </h2>
-                      <div id="contactoCollapse" className="accordion-collapse collapse" data-bs-parent="#soporteSubAccordion">
-                        <div className="accordion-body">
-                          <ul className="list-unstyled ms-2">
-                            <li className="mb-2"><a href="#" className="text-decoration-none text-dark"><i className="fi fi-rr-phone-call me-2"></i>Anexos...</a></li>
-                            <li><a href="#" className="text-decoration-none text-dark"><i className="fi fi-rr-envelope me-2"></i>Correo de...</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <ul className="list-unstyled mb-0">
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Portal de Incidencias Chile</a></li>
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Portal de Incidencias Perú</a></li>
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Portal de Solicitudes</a></li>
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Portal de GLPI (Chile)</a></li>
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Portal de GLPI (Perú)</a></li>
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Portal de concientización</a></li>
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Anexos Telefónicos</a></li>
+                    <li><a href="#" className="text-decoration-none text-dark">Correo de Soporte</a></li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -202,65 +184,19 @@ function HeaderPhone() {
               </h2>
               <div id="recursosCollapse" className="accordion-collapse collapse" data-bs-parent="#mobileNavAccordion">
                 <div className="accordion-body">
-                  <div className="accordion" id="recursosSubAccordion">
-                    <div className="accordion-item border-0">
-                      <h2 className="accordion-header">
-                        <button className="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#documentacionCollapse">
-                          Documentación
-                        </button>
-                      </h2>
-                      <div id="documentacionCollapse" className="accordion-collapse collapse" data-bs-parent="#recursosSubAccordion">
-                        <div className="accordion-body">
-                          <ul className="list-unstyled ms-2">
-                            <li className="mb-2 text-start"><a href="#" className="text-decoration-none text-dark"><i className="fi fi-rr-document me-2"></i>Ver...</a></li>
-                            <li className="text-start"><a href="#" className="text-decoration-none text-dark"><i className="fi fi-rr-play-alt me-2"></i>Video...</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="accordion-item border-0">
-                      <h2 className="accordion-header">
-                        <button className="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#herramientasCollapse">
-                          Herramientas
-                        </button>
-                      </h2>
-                      <div id="herramientasCollapse" className="accordion-collapse collapse" data-bs-parent="#recursosSubAccordion">
-                        <div className="accordion-body">
-                          <ul className="list-unstyled ms-2">
-                            <li className="mb-2 text-start"><a href="#" className="text-decoration-none text-dark"><i className="fi fi-rr-envelope me-2"></i>Generar... <span className="badge bg-success ms-1">Nuevo</span></a></li>
-                            <li className="text-start"><a href="#" className="text-decoration-none text-dark"><i className="fi fi-rr-comment-alt me-2"></i>Sugerencias <span className="badge bg-info ms-1">Beta</span></a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <ul className="list-unstyled mb-0">
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Ver documentación</a></li>
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Video Tutoriales</a></li>
+                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Generar Firmas</a></li>
+                    <li><a href="#" className="text-decoration-none text-dark">Sugerencias</a></li>
+                  </ul>
                 </div>
-              </div>
-            </div>
-
-            {/* Turnos */}
-            <div className="row-12 pt-2">
-              <div className="col-12">
-                <a href="#" className="d-flex align-items-center justify-content-start text-decoration-none">
-                  Turnos <i className="fi fi-rr-arrow-up-right ms-2"></i>
-                </a>  
-              </div>
-            </div>
-
-            {/* Turnos */}
-            <div className="row-12 pt-1">
-              <div className="col-12">
-                <a href="#" className="d-flex align-items-center justify-content-start text-decoration-none">
-                  Pagina oficial de Verfrut <i className="fi fi-rr-arrow-up-right ms-2"></i>
-                </a>  
               </div>
             </div>
 
           </div>
         </div>
       </div>
-      
     </header>
   )
 }
