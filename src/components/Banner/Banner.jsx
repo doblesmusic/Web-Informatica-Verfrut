@@ -44,9 +44,9 @@ function Banner() {
 
     <>
             <div className="gradient p-3">
-                <div className="container">
+                <div className="container m-0">
                     <div className="row">
-                        <div className="col-12 col-md-8">
+                        <div className="col-12 col-md-8 box-info">
                             <h1 className="gradient-title">Bienvenido <br />a sistemas y soporte.</h1>
                             <p className="gradient-description">Gestionamos la infraestructura tecnológica de Verfrut con soluciones vanguardistas que impulsan la eficiencia
                             el crecimiento continuo.</p>

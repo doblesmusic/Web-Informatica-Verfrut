@@ -1,5 +1,5 @@
-import laptop from '../../assets/laptop.png'
 import './Acordion.scss'
+import Btn from '../../components/Btn/Btn.jsx'
 
 export default function Acordion({ className, title, description, imageSrc, imageAlt, title2, title3, title4, title5, bodyText, bodyText2, bodyText3, bodyText4 }) {
     return (
@@ -17,11 +17,11 @@ export default function Acordion({ className, title, description, imageSrc, imag
                         <div className="accordion py-4" id="faqAccordion">
                         <div className="accordion-item">
                             <div className="accordion-header" id="collapse-item-1">
-                                <button className="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">{title2}</button>
+                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">{title2}</button>
                             </div>
-                            <div id="collapse-1" className="accordion-collapse collapse show"
-                                aria-labelledby="collapse-item-1" data-bs-parent="#faqAccordion">
+                            <div id="collapse-1" className="accordion-collapse collapse" aria-labelledby="collapse-item-1"
+                                data-bs-parent="#faqAccordion">
                                 <div className="accordion-body">
                                     <p>{bodyText}</p>
                                 </div>
@@ -71,7 +71,7 @@ export default function Acordion({ className, title, description, imageSrc, imag
                 </div>
                 <div className="col-xl-6">
                     <div className="img-container border rounded-3">
-                        <img src={imageSrc} alt={imageAlt} className="img-fluid w-100" />
+                        <img src={imageSrc} alt={imageAlt} className="img-fluid object-fit-cover w-100 h-100" />
                     </div>
                     <div className="faq8-shape"></div>
                 </div>

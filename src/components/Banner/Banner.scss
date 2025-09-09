@@ -7,29 +7,28 @@
     display: flex;
     flex-direction: column;
     font-size: 1.5rem;
-    height: 90vh;
+    height: 80vh; // Reducido para mobile
     justify-content: center;
     left: 50%;
-    margin: 70px 0 0 0;
     margin-left: -50vw;
     margin-right: -50vw;
-    padding: 100px 20px 0 20px;
+    padding: 20px;
     position: relative;
     right: 50%;
     text-align: center;
     width: 100vw;
-    border-radius: 0px 0px 20px 20px;
+    border-radius: 0px 0px 15px 15px;
 
     @media (min-width: 768px) {
-        text-align: left;
-        align-items: flex-start;
+        height: 90vh;
+        align-items: center;
         padding: 100px 12rem;
     }
 }
 
 .gradient-title {
     width: 100%;
-    text-align: left;
+    text-align: center;
     font-size: 2.5rem !important;
     color: #ffffff;
     margin-bottom: 1rem;
@@ -51,7 +50,7 @@
 
 .gradient-description {
     width: 100%;
-    text-align: left;
+    text-align: center;
     font-size: 1.3rem !important;
     color: #ffffff;
     margin-bottom: 2rem;
@@ -97,6 +96,36 @@
         padding: 18px 35px;
         font-size: 1.2rem;
     }
+}
+
+.box-info {
+    // Solo aplicar estilos específicos en mobile
+    @media (max-width: 767px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 29rem 0.5rem 2rem 0.5rem;
+        
+        .gradient-title {
+            font-size: 2rem !important;
+            margin-bottom: 0.8rem;
+        }
+        
+        .gradient-description {
+            font-size: 1.1rem !important;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-incidencias {
+            padding: 12px 25px;
+            font-size: 1rem;
+        }
+    }
+    
+    // En desktop y tablet, no aplicar estilos adicionales
+    // para mantener el diseño original del gradient
 }
 
 // Estilos del Modal
@@ -354,6 +383,11 @@
     &:not(:hover) {
         transform: scale(1);
     }
+    
+    // Ocultar en tablet y mobile
+    @media (max-width: 768px) {
+        display: none !important;
+    }
 }
 
 .hero-user {
@@ -363,6 +397,11 @@
     }
     &:not(:hover) {
         transform: translateX(-50%) scale(1);
+    }
+    
+    // Ocultar en tablet y mobile
+    @media (max-width: 768px) {
+        display: none !important;
     }
 }
 
@@ -374,6 +413,11 @@
     &:not(:hover) {
         transform: scale(1);
     }
+    
+    // Ocultar en tablet y mobile
+    @media (max-width: 768px) {
+        display: none !important;
+    }
 }
 
 .hero-person2 {
@@ -384,6 +428,11 @@
     &:not(:hover) {
         transform: scale(1);
     }
+    
+    // Ocultar en tablet y mobile
+    @media (max-width: 768px) {
+        display: none !important;
+    }
 }
 
 .hero-check {
@@ -393,5 +442,10 @@
     }
     &:not(:hover) {
         transform: scale(1);
+    }
+    
+    // Ocultar en tablet y mobile
+    @media (max-width: 768px) {
+        display: none !important;
     }
 }
