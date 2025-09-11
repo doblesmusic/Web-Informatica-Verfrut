@@ -114,22 +114,6 @@ function HeaderPhone({ onPageChange }) {
               </div>
             </div>
 
-            {/* Turnos - Nueva sección */}
-            <div className="accordion-item border-0 mb-2">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#turnosCollapse">
-                  Turnos
-                </button>
-              </h2>
-              <div id="turnosCollapse" className="accordion-collapse collapse" data-bs-parent="#mobileNavAccordion">
-                <div className="accordion-body">
-                  <ul className="list-unstyled mb-0">
-                    <li><a href="#" className="text-decoration-none text-dark" onClick={handleTurnosClick}>Ver Turnos</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
             {/* Sistemas */}
             <div className="accordion-item border-0 mb-2">
               <h2 className="accordion-header">
@@ -139,14 +123,19 @@ function HeaderPhone({ onPageChange }) {
               </h2>
               <div id="sistemasCollapse" className="accordion-collapse collapse" data-bs-parent="#mobileNavAccordion">
                 <div className="accordion-body">
-                  <ul className="list-unstyled mb-0">
-                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Cuenta Corriente Envases</a></li>
-                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Despacho de Fruta (Campo)</a></li>
-                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Documentos Electrónicos (DTE)</a></li>
-                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Intranet Friopacking</a></li>
-                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Plataforma DEC 5</a></li>
-                    <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Rendiciones</a></li>
-                    <li><a href="#" className="text-decoration-none text-dark">Vacaciones y Permisos</a></li>
+                  <ul className="list-unstyled mb-0 text-start">
+                    <li className="mb-2"><a href="https://api.verfrut.cl/ctacteenvases" target="_blank" className="text-decoration-none text-dark text-start"><i className="fi fi-rr-truck-check me-2"></i>Sistema Cuenta Corriente Envases</a></li>
+                    <li className="mb-2"><a href="javascript:void(0)" className="text-decoration-none text-muted text-start" data-bs-toggle="tooltip" title="Próximamente disponible" style={{cursor: "not-allowed"}}><i className="fi fi-rr-chart-line-up me-2"></i>Sistema Estimaciones Productivas y Comerciales</a></li>
+                    <li className="mb-2"><a href="javascript:void(0)" className="text-decoration-none text-muted text-start" data-bs-toggle="tooltip" title="Próximamente disponible" style={{cursor: "not-allowed"}}><i className="fi fi-rr-snowflake me-2"></i>Sistema Frío Packing</a></li>
+                    <li className="mb-2"><a href="javascript:void(0)" className="text-decoration-none text-muted text-start" data-bs-toggle="tooltip" title="Próximamente disponible" style={{cursor: "not-allowed"}}><i className="fi fi-rr-boxes me-2"></i>Sistema Materiales</a></li>
+                    <li className="mb-2"><a href="https://facturacion.verfrut.cl/Account/Login?ReturnUrl=%2f" target="_blank" className="text-decoration-none text-dark text-start"><i className="fi fi-rr-file me-2"></i>Sistema Documentos Electrónicos (DTE)</a></li>
+                    <li className="mb-2"><a href="https://rendiciones.verfrut.cl" target="_blank" className="text-decoration-none text-dark text-start"><i className="fi fi-rr-usd-circle me-2"></i>Sistema Rendiciones</a></li>
+                    <li className="mb-2"><a href="https://api.verfrut.cl/vacaciones" target="_blank" className="text-decoration-none text-dark text-start"><i className="fi fi-rr-umbrella-beach me-2"></i>Sistema Vacaciones y Permisos</a></li>
+                    <li className="mb-2"><a href="javascript:void(0)" className="text-decoration-none text-muted text-start" data-bs-toggle="tooltip" title="Próximamente disponible" style={{cursor: "not-allowed"}}><i className="fi fi-rr-calculator me-2"></i>Sistema Contabilidad</a></li>
+                    <li className="mb-2"><a href="javascript:void(0)" className="text-decoration-none text-muted text-start" data-bs-toggle="tooltip" title="Próximamente disponible" style={{cursor: "not-allowed"}}><i className="fi fi-rr-usd-circle me-2"></i>Sistema Tesorería</a></li>
+                    <li className="mb-2"><a href="javascript:void(0)" className="text-decoration-none text-muted text-start" data-bs-toggle="tooltip" title="Próximamente disponible" style={{cursor: "not-allowed"}}><i className="fi fi-rr-money me-2"></i>Sistema Remuneraciones</a></li>
+                    <li className="mb-2"><a href="javascript:void(0)" className="text-decoration-none text-muted text-start" data-bs-toggle="tooltip" title="Próximamente disponible" style={{cursor: "not-allowed"}}><i className="fi fi-rr-shield-check me-2"></i>Sistema Seguridad y Salud</a></li>
+                    <li><a href="javascript:void(0)" className="text-decoration-none text-muted text-start" data-bs-toggle="tooltip" title="Próximamente disponible" style={{cursor: "not-allowed"}}><i className="fi fi-rr-users me-2"></i>Perfiles</a></li>
                   </ul>
                 </div>
               </div>
@@ -189,6 +178,22 @@ function HeaderPhone({ onPageChange }) {
                     <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Video Tutoriales</a></li>
                     <li className="mb-2"><a href="#" className="text-decoration-none text-dark">Generar Firmas</a></li>
                     <li><a href="#" className="text-decoration-none text-dark">Sugerencias</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Turnos - Nueva sección */}
+            <div className="accordion-item border-0 mb-2">
+              <h2 className="accordion-header">
+                <button className="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#turnosCollapse">
+                  Turnos
+                </button>
+              </h2>
+              <div id="turnosCollapse" className="accordion-collapse collapse" data-bs-parent="#mobileNavAccordion">
+                <div className="accordion-body">
+                  <ul className="list-unstyled mb-0">
+                    <li><a href="#" className="text-decoration-none text-dark" onClick={handleTurnosClick}>Ver Turnos</a></li>
                   </ul>
                 </div>
               </div>

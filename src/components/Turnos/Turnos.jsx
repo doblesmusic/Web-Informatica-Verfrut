@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Turnos.scss'
+import Footer from '../Footer/Footer'
 
 const Turnos = () => {
   const [turnoDesarrollo, setTurnoDesarrollo] = useState(null);
@@ -38,6 +39,7 @@ const Turnos = () => {
   }, []);
 
   return (
+    <div>
     <div className="turnos-container">
       <div className="container">
         <div className="row">
@@ -48,7 +50,7 @@ const Turnos = () => {
               <div className="row">
                 <div className="col-12">
                   <h2 className="section-title text-start">
-                    🤔 ¿Cómo funcionan los turnos de soporte y sistemas?
+                  💬 ¿Cómo funcionan los turnos de soporte y sistemas?
                   </h2>
                   <p className="section-description text-start">
                     Los turnos se asignan semanalmente para garantizar que siempre haya personal disponible 
@@ -115,6 +117,11 @@ const Turnos = () => {
           </div>
         </div>
       </div>
+    </div>
+    <div className="pt-5 mt-5">
+      <Footer />
+    </div>
+    
     </div>
   )
 }

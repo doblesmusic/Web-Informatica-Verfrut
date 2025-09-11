@@ -30,6 +30,7 @@ $header-border-color: rgba(0, 0, 0, 0.1);
 // Estilos del Header (igual que Header.scss pero con variables independientes)
 .th-header {
   background-color: $header-bg-color;
+  padding: 1vh 2vh;
   border-bottom: 1px solid $header-border-color;
   position: sticky;
   top: 0;
@@ -74,6 +75,7 @@ $header-border-color: rgba(0, 0, 0, 0.1);
       
       .dropdown-item {
         padding: 0.75rem 1rem;
+        
         color: $secondary-color;
         transition: all 0.2s ease;
         border: none;

@@ -2,6 +2,7 @@ import '../../styles/main.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import '@flaticon/flaticon-uicons/css/all/all.css';
+import Badge from '../Badge/Badge';
 
 function Header({ onPageChange }) {
   const handleLogin = () => {
@@ -73,23 +74,111 @@ function Header({ onPageChange }) {
                     </a>
                     <ul className="dropdown-menu">
                       <li className="dropdown-submenu">
-                        <a className="dropdown-item dropdown-toggle-sub" href="#">Sistemas Operacionales<i className="fi fi-rr-angle-right"></i></a>
+                        <a className="dropdown-item dropdown-toggle-sub" href="#">Operacionales<i className="fi fi-rr-angle-right"></i></a>
                         <ul className="submenu">
-                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-truck-check"></i>Cuenta Corriente Envases</a></li>
-                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-apple-whole"></i>Despacho de Fruta (Campo)</a></li>
-                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-file"></i>Documentos Electrónicos (DTE)</a></li>
-                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-house-user"></i>Intranet Friopacking</a></li>
+                          <li><a className="dropdown-item" href="https://api.verfrut.cl/ctacteenvases" target="_blank"><i className="fi fi-rr-truck-check"></i>Sistema Cuenta Corriente Envases</a></li>
+                          <div className="d-flex align-items-center justify-content-start">
+                            <li>
+                              <a className="dropdown-item text-muted" href="javascript:void(0)" target="_blank" data-bs-toggle="tooltip" title="Próximamente disponible" style={{cursor: "not-allowed", pointerEvents: "none", color: "#6c757d", opacity: "0.55"}}><i className="fi fi-rr-chart-line-up"></i>Sistema Estimaciones Productivas</a>
+                            </li>
+                            <Badge variant="warning" size="sm" className="ms-0">Pronto</Badge>
+                          </div>
+                          <div className="d-flex align-items-center justify-content-start">
+                            <li>
+                              <a className="dropdown-item text-muted" href="javascript:void(0)" target="_blank" data-bs-toggle="tooltip" title="Próximamente disponible" style={{cursor: "not-allowed", pointerEvents: "none", color: "#6c757d", opacity: "0.55"}}><i className="fi fi-rr-snowflake"></i>Sistema Frío Packing</a>
+                            </li>
+                            <Badge variant="warning" size="sm" className="ms-0">Pronto</Badge>
+                          </div>
+                          <div className="d-flex align-items-center justify-content-start">
+                            <li>
+                              <a className="dropdown-item text-muted" href="javascript:void(0)" target="_blank" data-bs-toggle="tooltip" title="Próximamente disponible" style={{cursor: "not-allowed", pointerEvents: "none", color: "#6c757d", opacity: "0.55"}}><i className="fi fi-rr-boxes"></i>Sistema Materiales</a>
+                            </li> 
+                            <Badge variant="warning" size="sm" className="ms-0">Pronto</Badge>
+                          </div>
                         </ul>
                       </li>
                       <li className="dropdown-submenu">
                         <a className="dropdown-item dropdown-toggle-sub" href="#">
-                          Sistemas Administrativos
+                          Administrativos
                           <i className="fi fi-rr-angle-right"></i>
                         </a>
                         <ul className="submenu">
-                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-chart-user"></i>Plataforma DEC 5</a></li>
-                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-usd-circle"></i>Rendiciones</a></li>
-                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-umbrella-beach"></i>Vacaciones y Permisos</a></li>
+                          <li><a className="dropdown-item" href="https://facturacion.verfrut.cl/Account/Login?ReturnUrl=%2f" target="_blank"><i className="fi fi-rr-file"></i>Sistema Documentos Electrónicos (DTE)</a></li>
+                          <li><a className="dropdown-item" href="https://rendiciones.verfrut.cl" target="_blank"><i className="fi fi-rr-usd-circle"></i>Sistema Rendiciones</a></li>
+                          <li><a className="dropdown-item" href="https://api.verfrut.cl/vacaciones" target="_blank"><i className="fi fi-rr-umbrella-beach"></i>Sistema Vacaciones y Permisos</a></li>
+                          <div className="d-flex align-items-center justify-content-start">
+                            <li>
+                              <a className="dropdown-item"
+                                href="javascript:void(0)"
+                                target="_blank" 
+                                data-bs-toggle="tooltip"
+                                title="Próximamente disponible"
+                                style={{cursor: "not-allowed", pointerEvents: "none", opacity: "0.3"}}>
+                                <i className="fi fi-rr-calculator"></i>Sistema Contabilidad
+                              </a>
+                            </li>
+                            <Badge variant="warning" size="sm" className="ms-0">Pronto</Badge>
+                          </div>
+                          <div className="d-flex align-items-center justify-content-start">
+                            <li>
+                              <a className="dropdown-item"
+                                href="javascript:void(0)"
+                                target="_blank" 
+                                data-bs-toggle="tooltip"
+                                title="Próximamente disponible"
+                                style={{cursor: "not-allowed", pointerEvents: "none", opacity: "0.3"}}>
+                                <i className="fi fi-rr-usd-circle"></i>Sistema Tesorería
+                              </a>
+                            </li>
+                            <Badge variant="warning" size="sm" className="ms-0">Pronto</Badge>
+                          </div>
+                          <div className="d-flex align-items-center justify-content-start">
+                            <li>
+                              <a className="dropdown-item"
+                                href="javascript:void(0)"
+                                target="_blank" 
+                                data-bs-toggle="tooltip"
+                                title="Próximamente disponible"
+                                style={{cursor: "not-allowed", pointerEvents: "none", opacity: "0.3"}}>
+                                <i className="fi fi-rr-money"></i>Sistema Remuneraciones
+                              </a>
+                            </li>
+                            <Badge variant="warning" size="sm" className="ms-0">Pronto</Badge>
+                          </div>
+                          <div className="d-flex align-items-center justify-content-start">
+                            <li>
+                                  <a className="dropdown-item"
+                                    href="javascript:void(0)"
+                                    target="_blank" 
+                                    data-bs-toggle="tooltip"
+                                    title="Próximamente disponible"
+                                    style={{cursor: "not-allowed", pointerEvents: "none", opacity: "0.3"}}>
+                                    <i className="fi fi-rr-shield-check"></i>Sistema Seguridad y Salud
+                                  </a>
+                            </li>
+                                  <Badge variant="warning" size="sm" className="ms-0">Pronto</Badge>
+                          </div>
+                        </ul>
+                      </li>
+                      <li className="dropdown-submenu">
+                        <a className="dropdown-item dropdown-toggle-sub" href="#">
+                          Gestión de Usuarios
+                          <i className="fi fi-rr-angle-right"></i>
+                        </a>
+                        <ul className="submenu">
+                          <div className="d-flex align-items-center justify-content-start">
+                            <li>
+                              <a className="dropdown-item text-muted" 
+                                href="javascript:void(0)" 
+                                target="_blank" 
+                                data-bs-toggle="tooltip" 
+                                title="Próximamente disponible" 
+                                style={{cursor: "not-allowed", pointerEvents: "none", color: "#6c757d", opacity: "0.55"}}>
+                                <i className="fi fi-rr-users"></i>Perfiles
+                              </a>
+                            </li>
+                            <Badge variant="warning" size="sm" className="ms-0">Pronto</Badge>
+                          </div>
                         </ul>
                       </li>
                     </ul>
@@ -159,8 +248,8 @@ function Header({ onPageChange }) {
                           Herramientas<i className="fi fi-rr-angle-right"></i>
                         </a>
                         <ul className="submenu">
-                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-envelope"></i>Generar Firmas <span className="badge bg-success ms-2">Nuevo</span></a></li>
-                          <li><a className="dropdown-item" href="https://sugerencias.verfrut.cl/" target="_blank"><i className="fi fi-rr-comment-alt"></i>Sugerencias <span className="badge bg-info ms-2">Actualizada</span></a></li>
+                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-envelope"></i>Generar Firmas<Badge variant="success" size="sm" className="ms-2">Nuevo</Badge></a></li>
+                          <li><a className="dropdown-item" href="https://sugerencias.verfrut.cl/" target="_blank"><i className="fi fi-rr-comment-alt"></i>Sugerencias<Badge variant="primary" size="sm" className="ms-2">Actualizada</Badge></a></li>
                         </ul>
                       </li>
                     </ul>
