@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './Banner.scss'
-import BG from '../../assets/Hero/svg/BG.svg'
+import bg from '../../assets/Hero/svg/bg.svg'
 import CHECK from '../../assets/Hero/svg/CHECK.svg'
 import P1 from '../../assets/Hero/svg/P1.svg'
 import P2 from '../../assets/Hero/svg/P2.svg'
@@ -57,7 +57,7 @@ function Banner() {
                         </div>
                         <div className="col-12 col-md-4 hero-anidado" > 
                             <div className="hero-image-container" style={{position: 'relative', width: '100%', height: '400px'}}>
-                                <img src={BG} alt="Fondo" className='hero-bg' style={{
+                                <img src={bg} alt="Fondo" className='hero-bg' style={{
                                     position: 'absolute',
                                     top: 0,
                                     left: 0,
