@@ -76,7 +76,7 @@ const Turnos = () => {
                 <div className="col-md-6 mb-4">
                   <div className="contact-card">
                     <div className="card-icon">
-       
+                        <img src="public/whatsapp.svg" alt="Desarrollo" width={40} height={40} style={{fill: '#2463AE'}} />
                     </div>
                     <div className="card-content text-start">
                       <h3 className="card-title">Área de Desarrollo</h3>
@@ -96,7 +96,7 @@ const Turnos = () => {
                 <div className="col-md-6 mb-4">
                   <div className="contact-card">
                     <div className="card-icon">
-               
+                      <img src="public/whatsapp.svg" alt="Soporte" width={40} height={40} style={{fill: '#2463AE'}} />
                     </div>
                     <div className="card-content text-start">
                       <h3 className="card-title">Soporte Técnico</h3>

@@ -48,9 +48,9 @@ function Footer() {
                                 <h3 className="widget_title style2 text-white">Chile</h3>
                                 <div className="th-widget-about">
                                     <p className="footer-info mb-3">
-                                      <a href="tel:+56988776655" className="text-inherit">+56 9 88776655</a>  
+                                      <a href="tel:+56988776655" className="text-inherit">+56 9 88 7766 55</a>  
                                     </p>
-                                    <p className="footer-info mb-2">Caserio El Papayo Mz. "O" Castilla Pirua</p>
+                                    <p className="footer-info mb-2">Parcela 5, Santa Inés, Las Cabras, Chile</p>
                                     <p className="footer-info"><a className="text-inherit"
                                             href="mailto:contacto@verfrut.cl">contacto@verfrut.cl</a></p> 
                                 </div>
@@ -62,12 +62,13 @@ function Footer() {
                                 <div className="th-widget-about">
                                     <div className="footer-info">
                                         <p className="footer-info_text">
-                                            <a href="tel:+5173480005" className="text-inherit">+51 7 3480005</a>
+                                            <a href="tel:+5173480005" className="text-inherit">+51 73 48 00 05</a>
                                         </p>
                                     </div>
-                                    <p className="footer-info"><a className="text-inherit"
-                                            href="mailto:webteck@gmail.com">contacto@verfrut.cl</a></p>
-                                    <p className="footer-info">Caserio El Papayo Mz. "O" Castilla Pirua</p>
+                                    <p className="footer-info">Caserio El Papayo Mz. "O" Castilla Pirua, Peru</p>
+                                    <p className="footer-info">
+                                    <a className="text-inherit" href="mailto:webteck@gmail.com">contacto@verfrut.cl</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -90,12 +91,12 @@ function Footer() {
                                 <div className="download-btn-wrap">
                                     <div className="mb-10">
                                         <a href="https://play.google.com/store/apps/details?id=com.mobil.verfrut&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" className="download-btn">
-                                            <img src="assets/img/normal/google-play.png" alt="Google Play" />
+                                            <img src="public/google-play.svg" alt="Google Play" />
                                         </a>
                                     </div>
                                     <div>
                                         <a href="https://apps.apple.com/cl/app/frutapp/id6478648879?l=en-GB" target="_blank" rel="noopener noreferrer" className="download-btn">
-                                            <img src="assets/img/normal/app.png" alt="App Store" />
+                                            <img src="public/app-store.svg" alt="App Store" />
                                         </a>
                                     </div>
                                 </div>
