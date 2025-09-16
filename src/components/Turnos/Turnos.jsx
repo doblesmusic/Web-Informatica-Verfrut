@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Turnos.scss'
 import Footer from '../Footer/Footer'
+import Select from '../Select/Select'
 
 const Turnos = () => {
   const [turnoDesarrollo, setTurnoDesarrollo] = useState(null);
@@ -44,7 +45,6 @@ const Turnos = () => {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            
             {/* Primera sección: Explicación */}
             <div className="turnos-section mb-5">
               <div className="row">

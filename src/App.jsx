@@ -10,6 +10,7 @@ import Info from './components/Info/Info'
 import Info2 from './components/Info-2/Info2'
 import Acordion from './components/Acordion'
 import Turnos from './components/Turnos/Turnos'
+import Anexos from './components/Anexos/Anexos'
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home')
@@ -114,6 +115,8 @@ function App() {
         )}
         
         {currentPage === 'turnos' && <Turnos />}
+        
+        {currentPage === 'anexos' && <Anexos />}
       </main>
     </>
   )
