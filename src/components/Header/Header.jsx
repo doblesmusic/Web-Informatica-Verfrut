@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import '@flaticon/flaticon-uicons/css/all/all.css';
 import Badge from '../Badge/Badge';
+import logotipos from '/src/assets/logotipos-verfrut.svg';
 
 
 function Header({ onPageChange }) {
@@ -32,7 +33,7 @@ function Header({ onPageChange }) {
           <div className="col-3">
             <a href="/" className="d-flex align-items-center" onClick={handleHomeClick}>
               <img 
-                src="/src/assets/logotipos-verfrut.svg" 
+                src={logotipos} 
                 alt="Logo Verfrut" 
                 className="img-fluid"
                 style={{
