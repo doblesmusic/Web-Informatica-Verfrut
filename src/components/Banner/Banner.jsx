@@ -1,11 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './Banner.scss'
-import background from '../../assets/Hero/svg/background.svg';
-import CHECK from '../../assets/Hero/svg/CHECK.svg'
-import P1 from '../../assets/Hero/svg/P1.svg'
-import P2 from '../../assets/Hero/svg/P2.svg'
-import USER from '../../assets/Hero/svg/USER.svg'
+import background from '../../assets/hero/svg/background.svg';
+import CHECK from '../../assets/hero/svg/CHECK.svg'
+import P1 from '../../assets/hero/svg/P1.svg'
+import P2 from '../../assets/hero/svg/P2.svg'
+import USER from '../../assets/hero/svg/USER.svg'
 
 function IncidenciaModal() {
     return (
