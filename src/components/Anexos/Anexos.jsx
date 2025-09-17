@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react'
 import './Anexos.scss'
 import Footer from '../Footer/Footer'
 import Select from '../Select/Select'
+import Breadcrumb from '../Breadcrumb/Breadcrumb'
 
 const Anexos = () => {
 
   return (
     <>
+  {/* Breadcrumb */}
+  <div className="container-large">
+    <Breadcrumb title="Anexos"/>
+  </div>
 
 <div className='anexos-container'>
   {/* Selects */}
