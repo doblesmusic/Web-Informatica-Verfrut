@@ -226,7 +226,7 @@ function Header({ onPageChange }) {
                         </a>
                         <ul className="submenu">
                           <li><a className="dropdown-item" onClick={handleAnexosClick} href="#"><i className="fi fi-rr-phone-call"></i>Anexos Telefónicos</a></li>
-                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-envelope"></i>Correo de Soporte</a></li>
+                          <li><a className="dropdown-item" href="mailto:soporte@verfrut.cl"><i className="fi fi-rr-envelope"></i>Correo de Soporte</a></li>
                         </ul>
                       </li>
                       

@@ -1,13 +1,16 @@
 import React from 'react'
 import './Select.scss'
 
-const Select = () => {
+const Select = ({ id, value, onChange, options = [], placeholder = 'Selecciona una opción', className = 'form-select' }) => {
     return (
         <div>
-            <select className='form-select'>
-                <option value="1">Selecciona una opción</option>
-                <option value="2">Sistemas</option>
-                <option value="3">Desarrollo</option>
+            <select id={id} className={className} value={value} onChange={onChange}>
+               
+                {options.map(opt => (
+                    <option key={opt.value ?? opt} value={opt.value ?? opt}>
+                        {opt.label ?? opt}
+                    </option>
+                ))}
             </select>
         </div>
     )

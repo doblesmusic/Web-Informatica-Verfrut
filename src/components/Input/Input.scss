@@ -11,7 +11,7 @@ input {
     padding: 0 25px 0 25px;
     padding-right: 45px;
     border: 1px solid transparent;
-    color: #919191;
+    color: $body-color;
     background-color: $smoke-color;
     border-radius: 4px;
     font-size: 16px;
@@ -111,10 +111,6 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-/* Firefox */
-input[type="number"] {
-    -moz-appearance: textfield;
-}
 
 input[type="checkbox"] {
     visibility: hidden;

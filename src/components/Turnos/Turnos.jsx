@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './Turnos.scss'
 import Footer from '../Footer/Footer'
 import Breadcrumb from '../Breadcrumb/Breadcrumb'
+import Input from '../Input/Input'
 
 
 const Turnos = () => {
@@ -117,10 +118,9 @@ const Turnos = () => {
                       )}
                     </div>
                   </div>
-                </div>
+                </div>  
               </div>
             </div>
-
           </div>
         </div>
       </div>

@@ -52,3 +52,15 @@
     transform: translateY(-2px);
   }
 }
+
+$smoke-color: #f5f5f5; // ejemplo
+$white-color: #fff;
+$theme-color: $primary-color;
+$border-color: #e5e7eb;
+$error-color: #dc3545;
+$success-color: #28a745;
+$body-font: $font-family-primary;
+
+@mixin inputPlaceholder {
+  &::placeholder { @content; }
+}
