@@ -150,7 +150,6 @@ const Anexos = () => {
   </div>
 
   {/* Tabla (DataGrid) */}
-
   <div className="container mt-4 data-grid-container">
     <div className="table-responsive">
       <div style={{ width: '100%'}}>
@@ -184,11 +183,8 @@ const Anexos = () => {
       </div>
     </div>
   </div>
-
   {/* Footer */}
-  
   <Footer/>
-
 </div>
 </>
   )

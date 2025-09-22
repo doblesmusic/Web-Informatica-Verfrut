@@ -14,7 +14,8 @@ function HeaderPhone({ onPageChange }) {
   }
 
   const handleLogin = () => {
-    window.location.href = '/login';
+    // Abrir Login en una nueva pestaña
+    window.open('/login', '_blank');
   }
 
   return (

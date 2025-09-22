@@ -36,12 +36,56 @@ $transition-base: all 0.3s ease !default;
   }
 }
 
+.btn-secondary {
+  background-color: $secondary-color !important;
+  border-color: $secondary-color !important;
+  color: white !important;
+  
+  &:hover {
+    background-color: lighten($secondary-color, 10%) !important;
+    border-color: lighten($secondary-color, 10%) !important;
+    color: white !important;
+  }
+  
+  &:focus {
+    background-color: $secondary-color !important;
+    border-color: $secondary-color !important;
+    color: white !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25) !important;
+  }
+}
+
 .bg-primary {
   background-color: $primary-color !important;
 }
 
+.bg-secondary {
+  background-color: $secondary-color !important;
+}
+
 .text-primary {
   color: $primary-color !important;
+}
+
+.text-secondary {
+  color: $secondary-color !important;
+}
+
+// Estilos personalizados para inputs
+.form-control {
+  background-color: transparent !important;
+  border: 1px solid #d9dde0 !important;
+  border-radius: 8px !important;
+  
+  &:focus {
+    background-color: transparent !important;
+    border-color: $primary-color !important;
+    box-shadow: 0 0 0 0.2rem rgba(36, 99, 174, 0.25) !important;
+  }
+  
+  &::placeholder {
+    color: #6c757d !important;
+  }
 }
 
 // Reducir padding de nav items

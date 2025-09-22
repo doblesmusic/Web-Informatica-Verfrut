@@ -10,10 +10,10 @@ input {
     height: 56px;
     padding: 0 25px 0 25px;
     padding-right: 45px;
-    border: 1px solid transparent;
+    border: 2px solid #dee2e6;
     color: $body-color;
-    background-color: $smoke-color;
-    border-radius: 4px;
+    background-color: transparent;
+    border-radius: 8px;
     font-size: 16px;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
@@ -21,9 +21,9 @@ input {
 
     &:focus {
         outline: 0;
-        box-shadow: none;
+        box-shadow: 0 0 0 0.2rem rgba(36, 99, 174, 0.25);
         border-color: $theme-color;
-        background-color: $smoke-color;
+        background-color: transparent;
     }
 
     @include inputPlaceholder {
