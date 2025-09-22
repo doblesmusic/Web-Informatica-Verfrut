@@ -12,6 +12,7 @@ import Info2 from './components/Info-2/Info2'
 import Acordion from './components/Acordion'
 import Turnos from './components/Turnos/Turnos'
 import Anexos from './components/Anexos/Anexos'
+import HomePage from './components/HomePage/HomePage'
 import LoginPage from './pages/LoginPage'
 
 function App() {
