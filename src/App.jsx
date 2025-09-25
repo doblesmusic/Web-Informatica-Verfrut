@@ -14,16 +14,11 @@ import Turnos from './components/Turnos/Turnos'
 import Anexos from './components/Anexos/Anexos'
 import HomePage from './components/HomePage/HomePage'
 import LoginPage from './pages/LoginPage'
+import Blog from './components/Blog/Blog'
 
 function App() {
   const location = useLocation()
-  const [currentPage, setCurrentPage] = useState('home')
   const [isMobile, setIsMobile] = useState(false)
-  
-  const handlePageChange = (page) => {
-    setCurrentPage(page)
-    console.log('cambiando a la pagina', page)
-  }
 
   // Detectar si es móvil
   useEffect(() => {
@@ -41,6 +36,25 @@ function App() {
     return () => window.removeEventListener('resize', checkIsMobile)
   }, [])
 
+  // Scroll to top cuando cambia la ruta
+  useEffect(() => {
+    // Para la página de blog, usar scroll instantáneo sin animación
+    if (location.pathname === '/blog') {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant'
+      })
+    } else {
+      // Para otras páginas, usar scroll suave
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
+    }
+  }, [location.pathname])
+
   // Si estamos en la página de login, renderizar solo la página de login
   if (location.pathname === '/login') {
     return <LoginPage />
@@ -50,16 +64,17 @@ function App() {
     <>
       {/* Header responsive */}
       {isMobile ? (
-        <HeaderPhone onPageChange={handlePageChange} />
+        <HeaderPhone />
       ) : (
-        <Header onPageChange={handlePageChange} />
+        <Header />
       )}
       
-      <main>
-        {currentPage === 'home' && <HomePage />}
-        {currentPage === 'turnos' && <Turnos />}
-        {currentPage === 'anexos' && <Anexos />}
-      </main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/turnos" element={<Turnos />} />
+        <Route path="/anexos" element={<Anexos />} />
+        <Route path="/blog" element={<Blog />} />
+      </Routes>
     </>
   )
 }

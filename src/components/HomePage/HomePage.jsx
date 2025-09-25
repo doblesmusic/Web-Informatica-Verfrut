@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import Banner from '../Banner/Banner'
 import Marcas from '../Marcas/Marcas'
 import Info from '../Info/Info'
@@ -10,6 +11,7 @@ import Footer from '../Footer/Footer'
  * Componente principal que contiene todo el contenido de la página de inicio
  */
 function HomePage() {
+  const navigate = useNavigate()
   return (
     <>
       <Banner />
@@ -55,6 +57,7 @@ function HomePage() {
         imageSrc="./src/assets/incidencias.png"
         imageAlt="Personas trabajando en laptop"
         buttonText="Ver Más"
+        onClick={() => navigate('/blog')}
       />
       <Info2
         className="pt-5"

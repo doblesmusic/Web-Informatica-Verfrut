@@ -1,7 +1,7 @@
 import React from 'react'
 import './Info.scss'
 
-function Info({ title, description, imageSrc, imageAlt, buttonText }) {
+function Info({ title, description, imageSrc, imageAlt, buttonText, onClick }) {
     return (
             <div className="container-fluid">
                 <div className="row align-items-center">
@@ -15,7 +15,7 @@ function Info({ title, description, imageSrc, imageAlt, buttonText }) {
                     <div className="col-md-6 text-start p-5">
                         <h1 className="display-8 fw-bold mb-4">{title}</h1>
                         <p className="lead fs-6 mb-4 text-secondary">{description}</p>
-                        <button className="btn btn-primary btn-md">{buttonText}</button>
+                        <button className="btn btn-primary btn-md" onClick={onClick}>{buttonText}</button>
                     </div>
                 </div>
         </div>

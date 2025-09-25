@@ -2,11 +2,13 @@ import '../../styles/main.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import '@flaticon/flaticon-uicons/css/all/all.css';
+import { useNavigate } from 'react-router-dom';
 import Badge from '../Badge/Badge';
 import logotipos from '/src/assets/logotipos-verfrut.svg';
 
 
-function Header({ onPageChange }) {
+function Header() {
+  const navigate = useNavigate()
   const handleLogin = () => {
     // Abrir Login en una nueva pestaña
     window.open('/login', '_blank');
@@ -14,16 +16,16 @@ function Header({ onPageChange }) {
 
   const handleHomeClick = (e) => {
     e.preventDefault();
-    onPageChange('home');
+    navigate('/');
   }
 
   const handleTurnosClick = (e) => {
     e.preventDefault();
-    onPageChange('turnos');
+    navigate('/turnos');
   }
   const handleAnexosClick = (e) => {
     e.preventDefault();
-    onPageChange('anexos');
+    navigate('/anexos');
   }
 
   return (

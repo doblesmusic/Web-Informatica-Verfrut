@@ -1,16 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './Header-Phone.scss'
+import { useNavigate } from 'react-router-dom'
 
-function HeaderPhone({ onPageChange }) {
+function HeaderPhone() {
+  const navigate = useNavigate()
   const handleHomeClick = (e) => {
     e.preventDefault();
-    onPageChange('home');
+    navigate('/');
   }
 
   const handleTurnosClick = (e) => {
     e.preventDefault();
-    onPageChange('turnos');
+    navigate('/turnos');
   }
 
   const handleLogin = () => {
