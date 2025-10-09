@@ -2,6 +2,70 @@
 @import '../../styles/mixins';
 @import '../../styles/bootstrap-override';
 
+// PrimeNG-like Input Styles
+.p-inputtext {
+    font-family: var(--font-family, 'Montserrat', sans-serif);
+    font-size: 1rem;
+    color: #4b5563;
+    background: #ffffff;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    border-radius: 6px;
+    margin: 0;
+    box-sizing: border-box;
+
+    &:enabled:hover {
+        border-color: #9ca3af;
+    }
+
+    &:enabled:focus {
+        outline: 0;
+        outline-offset: 0;
+        box-shadow: 0 0 0 0.2rem #BFDBFE;
+        border-color: #3B82F6;
+    }
+
+    &::placeholder {
+        color: #9ca3af;
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+.p-component {
+    font-family: var(--font-family, 'Montserrat', sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.p-component,
+.p-component * {
+    box-sizing: border-box;
+}
+
+// Utility Classes
+.w-full {
+    width: 100% !important;
+}
+
+.border-round-xl {
+    border-radius: 0.75rem !important;
+}
+
+.py-3 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+.p-input-icon-right > .p-inputtext {
+    padding-right: 2.5rem;
+}
+
 select,
 .form-control,
 .form-select,

@@ -17,6 +17,8 @@
     right: 50%;
     text-align: center;
     width: 100vw;
+    border-radius: 0px 0px 15px 15px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
 
     @media (min-width: 768px) {
         height: 100vh;
@@ -61,6 +63,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0px 0px 15px 0px #a8ccff;
+
 }
 
 .login-form-header {

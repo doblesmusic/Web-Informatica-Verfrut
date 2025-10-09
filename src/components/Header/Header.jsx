@@ -27,6 +27,10 @@ function Header() {
     e.preventDefault();
     navigate('/anexos');
   }
+  const handleVideosClick = (e) => {
+    e.preventDefault();
+    navigate('/videos');
+  }
 
   return (
     <>
@@ -249,7 +253,7 @@ function Header() {
                         <ul className="submenu">
 
                           <li><a className="dropdown-item" href="http://localhost:3000/docs/introduccion-general" target="_blank"><i className="fi fi-rr-document"></i>Ver documentación</a></li>
-                          <li><a className="dropdown-item" href="#"><i className="fi fi-rr-play-alt"></i>Video Tutoriales</a></li>
+                          <li><a className="dropdown-item" href="#" onClick={handleVideosClick}><i className="fi fi-rr-play-alt"></i>Video Tutoriales</a></li>
                         </ul>
                       </li>
                       <li className="dropdown-submenu">

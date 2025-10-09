@@ -1,7 +1,7 @@
 import React from 'react'
 import './Login.scss'
-import password from '/svg/password.svg'
 import Input from '../Input/Input'
+import logotipos from '/src/assets/logotipos-verfrut.svg'
 
 /**
  * Componente de formulario de login
@@ -35,41 +35,46 @@ function Login({
     <div className={noBackground ? "login-container no-background" : "login-container"}>
       <div className="login-form">
         <div className="login-form-header p-3 d-flex justify-content-center align-items-center">
-          <img src={password} alt="Logo Verfrut" style={{width: '6.5rem', paddingLeft: '0.5rem'}} />
+          <img src={logotipos} alt="Logo Verfrut" style={{width: '7.5rem', paddingLeft: '0.5rem'}} />
+        </div>
+
+        <div className="login-form-description d-flex justify-content-center align-items-center">
+          <p style={{color: "#282d37", textAlign: "center", fontWeight: "700", fontSize: "1.5rem"}}>
+            {title}
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="login-form-body">
-          <div className="pt-3">
-            <label htmlFor="username" className="form-label ms-2" style={{color: "#6c757d", textAlign: "left", fontSize: "0.9rem"}}>
-              {usernamePlaceholder}
-            </label>
-            <div className="form-group has-label">
-              <input 
+          <div className="pt-2">
+            <div className="form-group">
+              <Input
                 autoComplete="username"
+                id="username" 
                 className="form-control"
-                id="username"
-                name="username"
+                placeholder={usernamePlaceholder}
                 required
                 type="text"
+                name="username"
               />
             </div>
           </div>
 
           <div className="pt-3">
-            <label htmlFor="password" className="form-label ms-2" style={{color: "#6c757d", textAlign: "left", fontSize: "0.9rem"}}>
-              {passwordPlaceholder}
-            </label>
-            <div className="">
-              <Input 
-                autoComplete="current-password"
-                className="form-control"
-                id="password"
-                name="password" 
-                required
-                type="password"
-              />
+            <div className="form-group">
+            <Input
+              autoComplete="current-password"       
+              id="password"
+              className="form-control"
+              placeholder={passwordPlaceholder}
+              required
+              type="password"
+              name="password"
+            />
             </div>
           </div>
+
+
+
 
           <div className="pt-3">
             <button type="submit" className="btn btn-primary btn-xl align-items-center justify-content-center w-100" style={{ fontSize: "0.9rem", height: "50px" }}>

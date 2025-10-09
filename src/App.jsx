@@ -12,6 +12,7 @@ import Info2 from './components/Info-2/Info2'
 import Acordion from './components/Acordion'
 import Turnos from './components/Turnos/Turnos'
 import Anexos from './components/Anexos/Anexos'
+import Videos from './components/Videos/Videos'
 import HomePage from './components/HomePage/HomePage'
 import LoginPage from './pages/LoginPage'
 import Blog from './components/Blog/Blog'
@@ -73,6 +74,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/turnos" element={<Turnos />} />
         <Route path="/anexos" element={<Anexos />} />
+        <Route path="/videos" element={<Videos />} />
         <Route path="/blog" element={<Blog />} />
       </Routes>
     </>
