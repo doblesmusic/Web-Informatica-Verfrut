@@ -9,7 +9,7 @@ import logotipos from '/src/assets/logotipos-verfrut.svg'
  * @param {string} props.title - Título del formulario
  * @param {string} props.description - Descripción del formulario
  * @param {string} props.buttonText - Texto del botón de login
- * @param {string} props.registerLink - Enlace de registro
+ * @param {string} props.registerLink - Enlace de registro 
  * @param {string} props.forgotPasswordLink - Enlace de recuperación de contraseña
  * @param {string} props.usernamePlaceholder - Placeholder del campo usuario
  * @param {string} props.passwordPlaceholder - Placeholder del campo contraseña
@@ -18,7 +18,7 @@ import logotipos from '/src/assets/logotipos-verfrut.svg'
 function Login({
   buttonText,
   description,
-  forgotPasswordLink,
+  forgotPasswordLink = "https://api.verfrut.cl/RecoverPass",
   passwordPlaceholder,
   registerLink, 
   title,
@@ -83,7 +83,12 @@ function Login({
           </div>
 
           <div className="pt-3">
-            <button type="submit" className="btn btn-secondary btn-xl align-items-center justify-content-center w-100" style={{ fontSize: "0.9rem", height: "50px" }}>
+            <button 
+              type="button" 
+              onClick={() => window.location.href = 'https://api.verfrut.cl/RecoverPass'}
+              className="btn btn-secondary btn-xl align-items-center justify-content-center w-100 p-0" 
+              style={{ fontSize: "0.9rem", height: "50px" }}
+            >
               {forgotPasswordLink}
             </button>
           </div>
