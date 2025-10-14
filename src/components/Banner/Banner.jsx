@@ -99,6 +99,7 @@ function Banner() {
                     </div>
                 </div>
             </div>
+
             <IncidenciaModal />
     </>
   )
