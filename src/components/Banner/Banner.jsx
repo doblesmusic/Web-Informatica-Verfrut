@@ -6,6 +6,7 @@ import CHECK from '/svg/CHECK.svg'
 import P1 from '/svg/P1.svg'
 import P2 from '/svg/P2.svg'
 import USER from '/svg/USER.svg'
+import { motion } from "framer-motion";
 
 function IncidenciaModal() {
     return (
@@ -46,15 +47,44 @@ function Banner() {
             <div className="gradient p-3">
                 <div className="container m-0">
                     <div className="row">
-                        <div className="col-12 col-md-8 box-info">
-                            <h1 className="gradient-title">Bienvenido <br />a sistemas y soporte.</h1>
-                            <p className="gradient-description">Gestionamos la infraestructura tecnológica de Verfrut con soluciones vanguardistas que impulsan la eficiencia
-                            el crecimiento continuo.</p>
-                            <button className='btn btn-primary btn-xl d-flex align-items-center gap-2' data-bs-toggle="modal" data-bs-target="#exampleModal" style={{fontSize: '16px', padding: '15px 20px'}}>
+                   
+
+                            <div className="col-12 col-md-8 box-info">
+                            <motion.h1
+                                className="gradient-title"
+                                initial={{ opacity: 0, y: 40 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6 }}
+                            >
+                                Bienvenido <br /> a sistemas y soporte.
+                            </motion.h1>
+
+                            <motion.p
+                                className="gradient-description"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3, duration: 0.6 }}
+                            >
+                                Gestionamos la infraestructura tecnológica de Verfrut con soluciones vanguardistas que impulsan la eficiencia
+                                y el crecimiento continuo.
+                            </motion.p>
+
+                            <motion.button
+                                className="btn btn-primary btn-xl d-flex align-items-center gap-2"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"
+                                style={{ fontSize: "16px", padding: "15px 20px" }}
+                                initial={{ scale: 0.9, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ delay: 0.5, type: "spring", stiffness: 120 }}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
                                 <i className="fi fi-rr-arrow-right"></i>
                                 Incidencias
-                            </button>
-                        </div>
+                            </motion.button>
+                            </div>
+                            
                         <div className="col-12 col-md-4 hero-anidado" > 
                             <div className="hero-image-container" style={{position: 'relative', width: '100%', height: '400px'}}>
                                 <img src={background} alt="Fondo" className='hero-bg' style={{
