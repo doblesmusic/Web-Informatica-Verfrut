@@ -46,6 +46,148 @@ function highlight(text, query) {
   );
 }
 
+// Genera thumbnail dinámico basado en el ID del video
+function getDynamicThumbnail(video) {
+  // Si ya tiene thumbnail específico, lo usa
+  if (video.thumbnail && video.thumbnail !== "/videos/intro.png") {
+    return video.thumbnail;
+  }
+  
+  // Genera thumbnail basado en el ID del video
+  const thumbnailPath = `/videos/thumbnails/${video.id}.png`;
+  
+  // Fallback a thumbnail genérico si no existe el específico
+  return thumbnailPath;
+}
+
+// Genera thumbnail automáticamente desde el video
+function generateVideoThumbnail(videoSrc, callback, timeInSeconds = 20) {
+  const video = document.createElement('video');
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  
+  video.crossOrigin = 'anonymous';
+  video.currentTime = timeInSeconds;
+  
+  video.addEventListener('loadeddata', () => {
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    
+    // Convierte el canvas a blob y luego a base64 para guardar en localStorage
+    canvas.toBlob((blob) => {
+      if (blob) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const base64Data = reader.result;
+          callback(base64Data);
+        };
+        reader.readAsDataURL(blob);
+      } else {
+        callback(null);
+      }
+    }, 'image/jpeg', 0.8);
+  });
+  
+  video.addEventListener('error', () => {
+    callback(null);
+  });
+  
+  video.src = videoSrc;
+  video.load();
+}
+
+// Funciones para manejar cache en localStorage
+function saveThumbnailToCache(videoId, thumbnailData) {
+  try {
+    const cache = JSON.parse(localStorage.getItem('videoThumbnails') || '{}');
+    cache[videoId] = {
+      data: thumbnailData,
+      timestamp: Date.now(),
+      expires: Date.now() + (7 * 24 * 60 * 60 * 1000) // 7 días
+    };
+    localStorage.setItem('videoThumbnails', JSON.stringify(cache));
+  } catch (error) {
+    console.warn('No se pudo guardar thumbnail en cache:', error);
+  }
+}
+
+function getThumbnailFromCache(videoId) {
+  try {
+    const cache = JSON.parse(localStorage.getItem('videoThumbnails') || '{}');
+    const cached = cache[videoId];
+    
+    if (cached && cached.expires > Date.now()) {
+      return cached.data;
+    }
+    
+    // Limpiar cache expirado
+    if (cached && cached.expires <= Date.now()) {
+      delete cache[videoId];
+      localStorage.setItem('videoThumbnails', JSON.stringify(cache));
+    }
+    
+    return null;
+  } catch (error) {
+    console.warn('Error leyendo cache de thumbnails:', error);
+    return null;
+  }
+}
+
+function clearExpiredThumbnails() {
+  try {
+    const cache = JSON.parse(localStorage.getItem('videoThumbnails') || '{}');
+    const now = Date.now();
+    let hasChanges = false;
+    
+    Object.keys(cache).forEach(videoId => {
+      if (cache[videoId].expires <= now) {
+        delete cache[videoId];
+        hasChanges = true;
+      }
+    });
+    
+    if (hasChanges) {
+      localStorage.setItem('videoThumbnails', JSON.stringify(cache));
+    }
+  } catch (error) {
+    console.warn('Error limpiando cache expirado:', error);
+  }
+}
+
+// Componente Skeleton para thumbnails
+const SkeletonThumbnail = () => (
+  <div 
+    className="skeleton-thumbnail"
+    style={{
+      aspectRatio: "16/9",
+      borderRadius: "8px",
+      position: "relative",
+      overflow: "hidden"
+    }}
+  >
+    <div 
+      className="play-icon-skeleton"
+      style={{
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "60px",
+        height: "60px",
+        borderRadius: "50%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: "24px",
+        color: "#c0c0c0"
+      }}
+    >
+      <i className="fi fi-rr-play"></i>
+    </div>
+  </div>
+);
+
 const Videos = () => {
   const [videos, setVideos] = useState([]);
   const [q, setQ] = useState("");
@@ -53,6 +195,46 @@ const Videos = () => {
   const [activeId, setActiveId] = useState(null); // id del video activo (para el modal)
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState("");
+  const [generatedThumbnails, setGeneratedThumbnails] = useState(new Map()); // Cache de thumbnails generados
+  const [loadingThumbnails, setLoadingThumbnails] = useState(new Set()); // Videos que están generando thumbnail
+
+  // Función para obtener thumbnail dinámico con generación automática
+  const getDynamicThumbnailWithGeneration = (video) => {
+    // Si ya tiene thumbnail específico, lo usa
+    if (video.thumbnail && video.thumbnail !== "/videos/intro.png") {
+      return video.thumbnail;
+    }
+    
+    // Si ya generamos el thumbnail para este video, lo usa
+    if (generatedThumbnails.has(video.id)) {
+      return generatedThumbnails.get(video.id);
+    }
+    
+    // Busca en localStorage primero
+    const cachedThumbnail = getThumbnailFromCache(video.id);
+    if (cachedThumbnail) {
+      setGeneratedThumbnails(prev => new Map(prev).set(video.id, cachedThumbnail));
+      return cachedThumbnail;
+    }
+    
+    // Marca como cargando y genera thumbnail desde el video
+    setLoadingThumbnails(prev => new Set(prev).add(video.id));
+    generateVideoThumbnail(video.src, (thumbnailData) => {
+      setLoadingThumbnails(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(video.id);
+        return newSet;
+      });
+      
+      if (thumbnailData) {
+        setGeneratedThumbnails(prev => new Map(prev).set(video.id, thumbnailData));
+        saveThumbnailToCache(video.id, thumbnailData);
+      }
+    });
+    
+    // Mientras se genera, usa el fallback
+    return "/src/assets/load.png";
+  };
 
   // Debounce 250ms
   const tRef = useRef(null);
@@ -61,6 +243,11 @@ const Videos = () => {
     tRef.current = setTimeout(() => setDebouncedQ(q), 250);
     return () => clearTimeout(tRef.current);
   }, [q]);
+
+  // Limpiar cache expirado al cargar
+  useEffect(() => {
+    clearExpiredThumbnails();
+  }, []);
 
   // Cargar videos (desde /public/json/videos.json)
   useEffect(() => {
@@ -142,6 +329,18 @@ const Videos = () => {
     }
   }, [activeId]);
 
+  // Limpiar URLs de thumbnails generados al desmontar
+  useEffect(() => {
+    return () => {
+      generatedThumbnails.forEach(url => {
+        if (url.startsWith('blob:')) {
+          URL.revokeObjectURL(url);
+        }
+        // Los base64 no necesitan limpieza manual
+      });
+    };
+  }, [generatedThumbnails]);
+
   function openPlayer(id) {
     setActiveId(id);
   }
@@ -182,7 +381,7 @@ const Videos = () => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Buscar videos (ej: ERP, firmas, SVG, vacaciones, etc.)"
+                      placeholder="Buscar"
                       value={q}
                       onChange={(e) => setQ(e.target.value)}
                       onKeyDown={(e) => { if (e.key === "Escape") setQ(""); }}
@@ -228,13 +427,21 @@ const Videos = () => {
                           onKeyDown={(e) => (e.key === "Enter" ? openPlayer(video.id) : null)}
                         >
                           <div className="video-thumbnail position-relative">
-                            <img
-                              src={video.thumbnail || "/src/assets/laptop.png"}
-                              alt={video.title}
-                              className="img-fluid rounded-2 w-100"
-                              style={{ aspectRatio: "16/9", objectFit: "cover" }}
-                              loading="lazy"
-                            />
+                            {loadingThumbnails.has(video.id) ? (
+                              <SkeletonThumbnail />
+                            ) : (
+                              <img
+                                src={getDynamicThumbnailWithGeneration(video)}
+                                alt={video.title}
+                                className="img-fluid rounded-2 w-100"
+                                style={{ aspectRatio: "16/9", objectFit: "cover" }}
+                                loading="lazy"
+                                onError={(e) => {
+                                  // Fallback a imagen genérica si no se puede cargar el thumbnail específico
+                                  e.target.src = "/src/assets/laptop.png";
+                                }}
+                              />
+                            )}
                             <div className="play-button d-flex align-items-center justify-content-center">
                               <i className="fi fi-rr-play"></i>
                             </div>
@@ -296,7 +503,7 @@ const Videos = () => {
           >
             <video
               src={current.src}
-              poster={current.thumbnail}
+              poster={getDynamicThumbnailWithGeneration(current)}
               controls
               autoPlay
               style={{ display: "block", width: "100%", height: "auto" }}
