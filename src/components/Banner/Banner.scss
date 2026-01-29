@@ -1,6 +1,6 @@
 .gradient {
     align-items: center;
-    background: linear-gradient(135deg, #15365a 0%, #225284 50%, #0b3456 100%);
+    background: linear-gradient(253deg, #1B3F8C 0%, #142c61 100%);
     border-radius: 0px;
     box-sizing: border-box;
     color: #ffffff;
@@ -71,8 +71,14 @@
     }
 }
 
+.btn-primary {
+    background: #1B3F8C;
+    border: 1px solid #1B3F8C;
+    color: white;
+}
+
 .btn-incidencias {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    background: linear-gradient(253deg, #1B3F8C 0%, #142c61 100%);
     border: none;
     border-radius: 50px;
     padding: 15px 30px;

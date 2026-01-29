@@ -103,7 +103,7 @@ function App() {
 
 ```scss
 // En _variables.scss
-$primary-color: #2463AE;
+$primary-color: #184289;
 $secondary-color: #000000;
 $background-color: #EFF1F9;
 $font-family-primary: 'Montserrat', sans-serif;

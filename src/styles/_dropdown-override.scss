@@ -1,4 +1,5 @@
 // Sobrescribir completamente Bootstrap dropdown
+// $primary-color viene de main.scss (variables)
 .th-header {
   // Estilos base del dropdown
   .dropdown {
@@ -88,7 +89,7 @@
     
     &:hover {
       background-color: #f8f9fa !important;
-      color: #2463AE !important;
+      color: $primary-color !important;
     }
   }
   
@@ -145,7 +146,7 @@
         
         &:hover {
           background-color: #f8f9fa !important;
-          color: #2463AE !important;
+          color: $primary-color !important;
         }
       }
     }

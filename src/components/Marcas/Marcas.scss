@@ -65,7 +65,7 @@
 
 .brand-sec4 .brand-box:hover {
     transform: translateY(-8px);
-    border-color: var(--theme-color, #2463AE);
+    border-color: var(--theme-color, #184289);
 }
 
 .brand-sec4 .brand-box img {
@@ -89,14 +89,14 @@
     background-color: #ffffff;
     border-radius: 50%;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    color: var(--theme-color, #2463AE);
+    color: var(--theme-color, #184289);
     transition: all 0.3s ease;
     z-index: 2;
 }
 
 .brand-sec4 .swiper-button-next:hover,
 .brand-sec4 .swiper-button-prev:hover {
-    background-color: var(--theme-color, #2463AE);
+    background-color: var(--theme-color, #184289);
     color: #ffffff;
     transform: scale(1.15);
 }

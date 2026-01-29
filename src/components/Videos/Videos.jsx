@@ -249,28 +249,272 @@ const Videos = () => {
     clearExpiredThumbnails();
   }, []);
 
-  // Cargar videos (desde /public/json/videos.json)
+  // Función para parsear el nombre del video y generar metadatos
+  function parseVideoName(fileName) {
+    // Remover extensión si existe
+    const nameWithoutExt = fileName.replace(/\.(mp4|avi|mov|webm|mkv)$/i, '');
+    
+    // Generar ID a partir del nombre
+    const id = nameWithoutExt
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, '');
+    
+    // Generar título más legible
+    const title = nameWithoutExt
+      .replace(/^Video\s*-\s*/i, '') // Remover "Video - " del inicio
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, l => l.toUpperCase()); // Capitalizar primera letra de cada palabra
+    
+    // Mapeo de palabras clave a tags
+    const tagMap = {
+      'ciberseguridad': ['ciberseguridad', 'seguridad', 'información'],
+      'authenticator': ['microsoft', 'authenticator', 'seguridad', 'tutorial'],
+      'dte': ['dte', 'proveedores', 'portal', 'tutorial'],
+      'intranet': ['intranet', 'promocional', 'corporativo'],
+      'rendiciones': ['rendiciones', 'aplicación', 'tutorial'],
+      'usb': ['seguridad', 'usb', 'buenas prácticas'],
+      'radius': ['radius', 'sistema', 'tutorial', 'red'],
+      'vacaciones': ['vacaciones', 'solicitud', 'rrhh', 'tutorial'],
+      'frutappjob': ['frutappjob', 'aplicación', 'tutorial'],
+      'karin': ['ley karin', 'legal', 'tutorial', 'rrhh'],
+      'modulo': ['dte', 'módulo', 'tutorial', 'facturación'],
+      'password': ['password', 'contraseña', 'seguridad', 'tutorial'],
+      'transportistas': ['transportistas', 'sistema', 'tutorial', 'logística'],
+    };
+    
+    // Buscar tags basados en palabras clave del nombre
+    const lowerName = nameWithoutExt.toLowerCase();
+    let tags = [];
+    for (const [key, tagList] of Object.entries(tagMap)) {
+      if (lowerName.includes(key)) {
+        tags = tagList;
+        break;
+      }
+    }
+    
+    // Generar descripción básica si no hay tags específicos
+    const description = tags.length > 0 
+      ? `Tutorial relacionado con ${tags[0]}.`
+      : `Video tutorial: ${title}`;
+    
+    return {
+      id,
+      title,
+      description,
+      src: import.meta.env.DEV 
+        ? `/api/qa_inicio/videos/${encodeURIComponent(fileName)}`
+        : `https://api.verfrut.cl/qa_inicio/videos/${encodeURIComponent(fileName)}`,
+      thumbnail: "/videos/intro.png",
+      tags,
+      date: new Date().toISOString().split('T')[0], // Fecha actual como fallback
+    };
+  }
+
+  // Cargar videos desde la API
   useEffect(() => {
     (async () => {
       try {
         setLoading(true);
-        const res = await fetch("/json/videos.json", { cache: "no-store" });
-        if (!res.ok) throw new Error("No se pudo cargar videos.json");
-        const data = await res.json();
+        setErr("");
+        
+        // Intentar cargar desde la API
+        // En desarrollo, usar el proxy de Vite para evitar CORS
+        // En producción, usar la URL completa directamente
+        const apiUrl = import.meta.env.DEV 
+          ? "/api/qa_inicio/videos/" 
+          : "https://api.verfrut.cl/qa_inicio/videos/";
+        
+        console.log("Intentando cargar videos desde la API:", apiUrl);
+        const apiRes = await fetch(apiUrl, { 
+          cache: "no-store",
+          mode: 'cors'
+        });
+        
+        console.log("Respuesta de la API:", {
+          ok: apiRes.ok,
+          status: apiRes.status,
+          statusText: apiRes.statusText,
+          contentType: apiRes.headers.get('content-type')
+        });
+        
+        let videoFiles = [];
+        
+        if (apiRes.ok) {
+          const contentType = apiRes.headers.get('content-type') || '';
+          const text = await apiRes.text(); // Leer el body una sola vez
+          console.log("Contenido recibido (primeros 500 caracteres):", text.substring(0, 500));
+          
+          // Intentar parsear como JSON primero
+          if (contentType.includes('application/json')) {
+            try {
+              const jsonData = JSON.parse(text);
+              // Si es un array de strings (nombres de archivos)
+              if (Array.isArray(jsonData)) {
+                videoFiles = jsonData.filter(file => 
+                  typeof file === 'string' && (file.includes('Video') || file.match(/\.(mp4|avi|mov|webm|mkv)$/i))
+                );
+              }
+              // Si es un objeto con una propiedad que contiene los archivos
+              else if (jsonData.files && Array.isArray(jsonData.files)) {
+                videoFiles = jsonData.files.filter(file => 
+                  typeof file === 'string' && (file.includes('Video') || file.match(/\.(mp4|avi|mov|webm|mkv)$/i))
+                );
+              }
+            } catch (jsonError) {
+              console.warn("No se pudo parsear como JSON, intentando como HTML/texto");
+            }
+          }
+          
+          // Si no hay videos aún, parsear como HTML/texto
+          if (videoFiles.length === 0) {
+            // Crear un parser DOM temporal para extraer enlaces/archivos
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            
+            // Buscar enlaces <a> que apunten a archivos de video
+            const links = doc.querySelectorAll('a[href]');
+            links.forEach(link => {
+              const href = link.getAttribute('href');
+              const textContent = link.textContent.trim();
+              
+              // Si el href o el texto contienen "Video", es probable que sea un video
+              if (href && (href.includes('Video') || textContent.includes('Video'))) {
+                // Extraer nombre del archivo del href o del texto
+                let fileName = href.split('/').pop() || textContent;
+                
+                // Limpiar el nombre
+                fileName = fileName.trim();
+                
+                // Si no tiene extensión, agregar .mp4
+                if (fileName && !fileName.match(/\.(mp4|avi|mov|webm|mkv)$/i)) {
+                  fileName += '.mp4';
+                }
+                
+                // Agregar si es válido y no está duplicado
+                if (fileName && fileName.length > 5 && !videoFiles.includes(fileName)) {
+                  videoFiles.push(fileName);
+                }
+              }
+            });
+            
+            // Si no encontramos enlaces, parsear como texto plano
+            if (videoFiles.length === 0) {
+              const lines = text.split('\n');
+              
+              // Buscar líneas con patrones de nombres de video
+              lines.forEach(line => {
+                // Patrón 1: "Video - Nombre" seguido de números (tamaño) - más específico
+                // Ejemplo: "Video - Informacion-Ciberseguridad    134541142"
+                const pattern1 = /(Video\s*-\s*[^\s<>"]+?)(?:\s+\d+)?/gi;
+                const matches1 = line.match(pattern1);
+                if (matches1) {
+                  matches1.forEach(match => {
+                    let fileName = match.trim();
+                    // Remover números al final si existen (tamaño del archivo)
+                    fileName = fileName.replace(/\s+\d+$/, '');
+                    if (!fileName.match(/\.(mp4|avi|mov|webm|mkv)$/i)) {
+                      fileName += '.mp4';
+                    }
+                    if (!videoFiles.includes(fileName)) {
+                      videoFiles.push(fileName);
+                    }
+                  });
+                }
+                
+                // Patrón 2: Cualquier texto que termine con .mp4 u otra extensión de video
+                const pattern2 = /([^\s<>"]+\.(mp4|avi|mov|webm|mkv))/gi;
+                const matches2 = line.match(pattern2);
+                if (matches2) {
+                  matches2.forEach(match => {
+                    const fileName = match.trim();
+                    if (fileName.includes('Video') && !videoFiles.includes(fileName)) {
+                      videoFiles.push(fileName);
+                    }
+                  });
+                }
+                
+                // Patrón 3: Líneas que contienen "Video" y números (formato de lista de directorio)
+                // Ejemplo: "   134541142 Video - Informacion-Ciberseguridad"
+                const pattern3 = /\s+\d+\s+(Video\s*-\s*[^\s<>"]+)/gi;
+                const matches3 = line.match(pattern3);
+                if (matches3) {
+                  matches3.forEach(match => {
+                    let fileName = match.trim().replace(/^\d+\s+/, ''); // Remover número al inicio
+                    if (!fileName.match(/\.(mp4|avi|mov|webm|mkv)$/i)) {
+                      fileName += '.mp4';
+                    }
+                    if (!videoFiles.includes(fileName)) {
+                      videoFiles.push(fileName);
+                    }
+                  });
+                }
+              });
+            }
+          }
+          
+          console.log(`Archivos de video encontrados: ${videoFiles.length}`, videoFiles);
+        } else {
+          console.error("La API no respondió correctamente:", apiRes.status, apiRes.statusText);
+        }
+        
+        // Si la API no funciona o no devuelve videos, usar JSON como fallback
+        if (videoFiles.length === 0) {
+          console.warn("No se encontraron videos en la API, usando JSON local como fallback");
+          const jsonRes = await fetch("/json/videos.json", { cache: "no-store" });
+          if (jsonRes.ok) {
+            const data = await jsonRes.json();
+            const enriched = (Array.isArray(data) ? data : []).map((v, i) => ({
+              id: v.id ?? v.src ?? String(i),
+              ...v,
+              _title: normalize(v.title),
+              _description: normalize(v.description),
+              _tags: (v.tags || []).map(normalize),
+            }));
+            setVideos(enriched);
+            return;
+          } else {
+            throw new Error("No se pudo cargar videos desde la API ni desde el JSON local");
+          }
+        }
+        
+        // Mapear archivos de la API a la estructura esperada
+        const videosData = videoFiles.map(fileName => {
+          const parsed = parseVideoName(fileName);
+          return {
+            ...parsed,
+            _title: normalize(parsed.title),
+            _description: normalize(parsed.description),
+            _tags: parsed.tags.map(normalize),
+          };
+        });
 
-        // Enriquecer con campos normalizados y asegurar id
-        const enriched = (Array.isArray(data) ? data : []).map((v, i) => ({
-          id: v.id ?? v.src ?? String(i),
-          ...v,
-          _title: normalize(v.title),
-          _description: normalize(v.description),
-          _tags: (v.tags || []).map(normalize),
-        }));
-
-        setVideos(enriched);
+        console.log(`Cargados ${videosData.length} videos desde la API`);
+        setVideos(videosData);
       } catch (e) {
-        console.error(e);
-        setErr("Error cargando videos.");
+        console.error("Error cargando videos desde API:", e);
+        
+        // Fallback a JSON local si la API falla
+        try {
+          const jsonRes = await fetch("/json/videos.json", { cache: "no-store" });
+          if (jsonRes.ok) {
+            const data = await jsonRes.json();
+            const enriched = (Array.isArray(data) ? data : []).map((v, i) => ({
+              id: v.id ?? v.src ?? String(i),
+              ...v,
+              _title: normalize(v.title),
+              _description: normalize(v.description),
+              _tags: (v.tags || []).map(normalize),
+            }));
+            setVideos(enriched);
+            console.log("Videos cargados desde JSON local (fallback)");
+          } else {
+            setErr("Error cargando videos. Por favor, recarga la página.");
+          }
+        } catch (fallbackError) {
+          console.error("Error en fallback:", fallbackError);
+          setErr("Error cargando videos. Por favor, recarga la página.");
+        }
       } finally {
         setLoading(false);
       }
@@ -350,6 +594,7 @@ const Videos = () => {
 
   return (
     <div className="container-fluid">
+      
       {/* Breadcrumb */}
       <div className="container-large">
         <Breadcrumb title="Videos" />
@@ -379,12 +624,17 @@ const Videos = () => {
                 <div className="col-12 mb-4">
                   <div className="search-container d-flex gap-2">
                     <input
-                      type="text"
+                      type="search"
                       className="form-control"
                       placeholder="Buscar"
                       value={q}
                       onChange={(e) => setQ(e.target.value)}
                       onKeyDown={(e) => { if (e.key === "Escape") setQ(""); }}
+                      autoComplete="off"
+                      name="search"
+                      id="video-search-input"
+                      data-form-type="other"
+                      data-lpignore="true"
                       style={{
                         fontFamily: "Montserrat, sans-serif",
                         padding: "0.75rem",
@@ -393,7 +643,7 @@ const Videos = () => {
                         boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
                       }}
                     />
-                    {q && (
+                    {/* {q && (
                       <button
                         type="button"
                         className="btn btn-outline-secondary"
@@ -401,7 +651,7 @@ const Videos = () => {
                       >
                         Limpiar
                       </button>
-                    )}
+                    )} */}
                   </div>
                 </div>
               </div>
@@ -467,6 +717,7 @@ const Videos = () => {
                   ))}
                 </div>
               </div>
+
             </div>
           </div>
         </div>

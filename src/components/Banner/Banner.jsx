@@ -56,7 +56,7 @@ function Banner() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6 }}
                             >
-                                Bienvenido <br /> a sistemas y soporte.
+                                Bienvenido <br/><span className='light-title'>a sistemas y soporte.</span>
                             </motion.h1>
 
                             <motion.p

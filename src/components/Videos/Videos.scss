@@ -61,7 +61,7 @@
       .card-icon {
         width: 80px;
         height: 80px;
-        background: #2463AE;
+        background: #184289;
         border-radius: 16px;
         display: flex;
         align-items: center;
@@ -186,13 +186,13 @@
     
     i {
       font-size: 1.5rem;
-      color: #2463AE;
+      color: #184289;
       margin-left: 1rem;
       margin-top: 0.3rem; // Ajuste visual para centrar el ícono de play
     }
     
     &:hover {
-      background-color: #2463AE;
+      background-color: #184289;
       transform: translate(-50%, -50%) scale(1.1);
       box-shadow: 0 6px 20px rgba(36, 99, 174, 0.3);
       

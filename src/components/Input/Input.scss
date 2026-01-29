@@ -23,8 +23,8 @@
     &:enabled:focus {
         outline: 0;
         outline-offset: 0;
-        box-shadow: 0 0 0 0.2rem #BFDBFE;
-        border-color: #3B82F6;
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+        border-color: $primary-color;
     }
 
     &::placeholder {

@@ -34,7 +34,7 @@ const Turnos = () => {
     fetch('public/json/turnos_soporte.json')
       .then(response => response.json())
       .then(data => {
-        const turno = data.find(t => t.semana === semanaActual && t.area === "Sistemas");
+        const turno = data.find(t => t.semana === semanaActual && t.area === "Soporte");
         setTurnoSoporte(turno);
       })
       .catch(error => console.error('Error cargando turnos de soporte:', error));
@@ -84,7 +84,7 @@ const Turnos = () => {
                 <div className="col-md-6 mb-4">
                   <div className="contact-card">
                     <div className="card-icon">
-                        <img src="public/whatsapp.svg" alt="Desarrollo" width={40} height={40} style={{fill: '#2463AE'}} />
+                        <img src="public/whatsapp.svg" alt="Desarrollo" width={40} height={40} style={{fill: '#184289'}} />
                     </div>
                     <div className="card-content text-start">
                       <h3 className="card-title">Área de Desarrollo</h3>
@@ -104,7 +104,7 @@ const Turnos = () => {
                 <div className="col-md-6 mb-4">
                   <div className="contact-card">
                     <div className="card-icon">
-                      <img src="public/whatsapp.svg" alt="Soporte" width={40} height={40} style={{fill: '#2463AE'}} />
+                      <img src="public/whatsapp.svg" alt="Soporte" width={40} height={40} style={{fill: '#184289'}} />
                     </div>
                     <div className="card-content text-start">
                       <h3 className="card-title">Soporte Técnico</h3>

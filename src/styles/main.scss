@@ -69,17 +69,19 @@ body {
     color: inherit;
     border-radius: 18px;
     padding: 0.5rem 1rem; // Reducido significativamente
+    font-size: 0.9rem; // Tamaño reducido para evitar saltos de línea
+    white-space: nowrap; // Evita que el texto se divida en múltiples líneas
     @include transition(all, 0.5s, ease);
 
     &:hover {
       color: $primary-color;
-      background-color: rgba(36, 99, 174, 0.1); // Azul claro con transparencia
+      background-color: rgba($primary-color, 0.1); // Azul claro con transparencia
       border-radius: 18px;
     }
 
     &.active {
       color: $primary-color;
-      background-color: rgba(36, 99, 174, 0.15); // Un poco más opaco para el activo
+      background-color: rgba($primary-color, 0.15); // Un poco más opaco para el activo
       border-radius: 18px;
       font-weight: 600;
     }

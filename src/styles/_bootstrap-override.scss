@@ -80,7 +80,7 @@ $transition-base: all 0.3s ease !default;
   &:focus {
     background-color: transparent !important;
     border-color: $primary-color !important;
-    box-shadow: 0 0 0 0.2rem rgba(36, 99, 174, 0.25) !important;
+    box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25) !important;
   }
   
   &::placeholder {

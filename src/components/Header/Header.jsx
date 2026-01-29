@@ -4,7 +4,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import '@flaticon/flaticon-uicons/css/all/all.css';
 import { useNavigate } from 'react-router-dom';
 import Badge from '../Badge/Badge';
-import logotipos from '/src/assets/logotipos-verfrut.svg';
+import logotipos from '/src/assets/Logo-Tagline.svg';
 
 
 function Header() {
@@ -203,7 +203,6 @@ function Header() {
                       Soporte TI
                     </a>
                     <ul className="dropdown-menu animate slideIn">
-                      
                       <li className="dropdown-submenu">
                         <a className="dropdown-item dropdown-toggle-sub" href="#">
                           Incidencias y Solicitudes
@@ -235,6 +234,26 @@ function Header() {
                           <li><a className="dropdown-item" onClick={handleAnexosClick} href="#"><i className="fi fi-rr-phone-call"></i>Anexos Telefónicos</a></li>
                           <li><a className="dropdown-item" href="mailto:soporte@verfrut.cl"><i className="fi fi-rr-envelope"></i>Correo de Soporte</a></li>
                         </ul>
+                      </li>
+                      
+                    </ul>
+                  </li>
+
+                  {/* Seguridad */}
+                  <li className="nav-item dropdown">
+                    <a className="nav-link" href="#" role="button">
+                      Seguridad
+                    </a>
+                    <ul className="dropdown-menu animate slideIn">
+                      <li className="dropdown-submenu">
+                        <a className="dropdown-item dropdown-toggle-sub" href="#">
+                          Concientización
+                        </a>
+                      </li>
+                      <li className="dropdown-submenu">
+                        <a className="dropdown-item dropdown-toggle-sub" href="#">
+                          Protocolos de  Seguridad
+                        </a>
                       </li>
                       
                     </ul>
@@ -278,7 +297,7 @@ function Header() {
             </nav>
           </div>
           <div className="col-3 text-end d-flex justify-content-end">
-            <div className='btn btn-primary btn-sm d-flex align-items-center' onClick={handleLogin}><i className="fi fi-rr-user" style={{color: "#87CEEB"}}></i>Iniciar Sesión</div>
+            <div className='btn btn-primary btn-sm d-flex align-items-center' onClick={handleLogin}><i className="fi fi-rr-user" style={{color: "#ffffff"}}></i>Iniciar Sesión</div>
           </div>
         </div>
       </div>
@@ -288,3 +307,11 @@ function Header() {
 }
 
 export default Header
+
+// Ejemplo de como se puede usar la API de Figma para obtener los colores de la marca
+// const getColors = async () => {
+//   const response = await fetch('https://api.figma.com/v1/files/1234567890/colors');
+//   const data = await response.json();
+//   console.log(data);
+// }
+// getColors();
