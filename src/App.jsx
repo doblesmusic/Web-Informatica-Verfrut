@@ -61,6 +61,16 @@ function App() {
     return <LoginPage />
   }
 
+  // Dashboard (post-login): reemplazar con tu página real
+  if (location.pathname === '/dashboard') {
+    return (
+      <div className="container py-5 text-center">
+        <h1>Dashboard</h1>
+        <p>Bienvenido al portal de productores.</p>
+      </div>
+    )
+  }
+
   return (
     <>
       {/* Header responsive */}
